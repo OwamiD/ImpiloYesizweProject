@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ImpiloYesizwe Care Community Project – Supporting vulnerable children, families and communities through education, healthcare and social support." />
+    <title>@ViewData["Title"] - ImpiloYesizwe</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ImpiloYesizweProject.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-success fs-4" asp-controller="Home" asp-action="Index">
+                    IMPILOYESIZWE
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#services">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#gallery">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                        <li class="nav-item ms-lg-2">
+                            <a class="btn btn-success btn-sm px-3" href="#donate">Donate</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main role="main" class="flex-grow-1">
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer border-top mt-auto">
+        <div class="container text-center py-4">
+            <p class="mb-1 fw-semibold text-success">ImpiloYesizwe Care Community Project</p>
+            <p class="mb-0 text-muted small">
+                &copy; @DateTime.Now.Year – All rights reserved
+            </p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
