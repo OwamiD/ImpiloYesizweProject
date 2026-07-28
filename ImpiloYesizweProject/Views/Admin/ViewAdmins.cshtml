@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ImpiloYesizweProject.Models.AdminUser>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Administrators";
+}
+
+<div class="container py-5">
+
+    <div class="card shadow border-0">
+
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h2 class="text-success">
+                    👥 Administrators
+                </h2>
+
+                <a asp-action="AddAdmin"
+                   class="btn btn-success">
+                    + Add Admin
+                </a>
+
+            </div>
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-success">
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var admin in Model)
+                    {
+                        <tr>
+                            <td>@admin.FullName</td>
+                            <td>@admin.Email</td>
+                            <td>@admin.Username</td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

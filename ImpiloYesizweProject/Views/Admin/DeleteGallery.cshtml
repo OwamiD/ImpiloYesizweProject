@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+@model ImpiloYesizweProject.Models.GalleryImage
+
+@{
+    ViewData["Title"] = "Delete Image";
+}
+
+<div class="container py-5">
+
+    <div class="card shadow border-0">
+
+        <div class="card-body text-center">
+
+            <h2 class="text-danger">
+                Delete Gallery Image
+            </h2>
+
+            <hr />
+
+            <img src="@Model.ImageUrl"
+                 class="img-fluid rounded mb-3"
+                 style="max-height:300px;" />
+
+            <h4>@Model.Title</h4>
+
+            <p>
+                Are you sure you want to permanently delete this image?
+            </p>
+
+            <form asp-action="DeleteGallery" method="post">
+
+                @Html.AntiForgeryToken()
+
+                <input asp-for="Id" type="hidden" />
+
+                <button class="btn btn-danger">
+                    Delete Image
+                </button>
+
+                <a asp-action="Gallery"
+                   class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

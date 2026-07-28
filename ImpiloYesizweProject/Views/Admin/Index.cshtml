@@ -1,0 +1,302 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model ImpiloYesizweProject.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container py-5">
+
+    <h1 class="text-success mb-4">
+        Admin Dashboard
+    </h1>
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+
+            <h4 class="text-success">
+                👋 Welcome, Admin
+            </h4>
+
+            <p class="text-muted mb-0">
+                Today is <strong>@DateTime.Now.ToString("dddd, dd MMMM yyyy")</strong>
+            </p>
+
+            <p class="mb-0">
+                Manage messages, donations, services and gallery images from one place.
+            </p>
+
+        </div>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- Messages -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card shadow border-0 text-center p-4 h-100">
+                <h1>📩</h1>
+
+                <h5>Messages</h5>
+
+                <h2 class="display-5 fw-bold text-success">
+                    @Model.TotalMessages
+                </h2>
+
+                <a asp-action="Messages" class="btn btn-success mt-3">
+                    View Messages
+                </a>
+            </div>
+        </div>
+
+        <!-- Donations -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card shadow border-0 text-center p-4 h-100">
+                <h1>💰</h1>
+
+                <h5>Donations</h5>
+
+                <h2 class="display-5 fw-bold text-success">
+                    @Model.TotalDonations
+                </h2>
+
+                <a asp-action="Donations" class="btn btn-success mt-3">
+                    View Donations
+                </a>
+            </div>
+        </div>
+
+        <!-- Gallery -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card shadow border-0 text-center p-4 h-100">
+                <h1>🖼️</h1>
+
+                <h5>Gallery</h5>
+
+                <h2 class="display-5 fw-bold text-success">
+                    @Model.TotalGalleryImages
+                </h2>
+
+                <a asp-action="Gallery" class="btn btn-success mt-3">
+                    Manage
+                </a>
+            </div>
+        </div>
+
+        <!-- Services -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card shadow border-0 text-center p-4 h-100">
+                <h1>🛠️</h1>
+
+                <h5>Services</h5>
+
+                <h2 class="display-5 fw-bold text-success">
+                    @Model.TotalServices
+                </h2>
+
+                <a asp-action="Services" class="btn btn-success mt-3">
+                    Manage
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="row mt-5">
+
+        <!-- Recent Messages -->
+        <div class="col-lg-6">
+
+            <div class="card shadow border-0">
+
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">📩 Recent Messages</h5>
+                </div>
+
+                <div class="card-body">
+
+                    @if (Model.RecentMessages.Any())
+                    {
+                        <table class="table table-hover">
+
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                @foreach (var message in Model.RecentMessages)
+                                {
+                                    <tr>
+                                        <td>@message.FullName</td>
+                                        <td>@message.DateSent.ToString("dd MMM")</td>
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    }
+                    else
+                    {
+                        <p class="text-muted">
+                            No messages yet.
+                        </p>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Recent Donations -->
+        <div class="col-lg-6">
+
+            <div class="card shadow border-0">
+
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">💰 Recent Donations</h5>
+                </div>
+
+                <div class="card-body">
+
+                    @if (Model.RecentDonations.Any())
+                    {
+                        <table class="table table-hover">
+
+                            <thead>
+                                <tr>
+                                    <th>Donor</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                @foreach (var donation in Model.RecentDonations)
+                                {
+                                    <tr>
+                                        <td>@donation.DonorName</td>
+                                        <td>R @donation.Amount.ToString("N2")</td>
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    }
+                    else
+                    {
+                        <p class="text-muted">
+                            No donations yet.
+                        </p>
+                    }
+
+                </div>
+
+            </div>
+            <div class="card shadow border-0 mt-5">
+
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">📊 System Statistics</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <canvas id="dashboardChart" height="100"></canvas>
+
+                </div>
+
+            </div>
+            <!-- Total Raised -->
+            <!-- Total Raised -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow border-0 text-center p-4 h-100">
+
+                    <h1>❤️</h1>
+
+                    <h5>Total Raised</h5>
+
+                    <h2 class="text-success fw-bold">
+                        R @Model.TotalDonationAmount.ToString("N2")
+                    </h2>
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h2 class="text-success">
+                    Administrators
+                </h2>
+
+                <a asp-action="AddAdmin"
+                   class="btn btn-success">
+                    + Add Administrator
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+@section Scripts {
+
+    <script>
+
+        const ctx = document.getElementById('dashboardChart');
+
+        new Chart(ctx, {
+
+            type: 'bar',
+
+            data: {
+
+                labels: ['Messages', 'Donations', 'Gallery', 'Services'],
+
+                datasets: [{
+
+                    label: 'Total Records',
+
+                    data: [
+
+                        @Model.TotalMessages,
+
+                        @Model.TotalDonations,
+
+                        @Model.TotalGalleryImages,
+
+                        @Model.TotalServices
+
+                    ]
+
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+
+            }
+
+        });
+
+    </script>
+
+}

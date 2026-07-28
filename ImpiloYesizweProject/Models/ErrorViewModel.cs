@@ -1,4 +1,4 @@
-namespace ImpiloYesizweProject.Models
+﻿namespace ImpiloYesizweProject.Models
 {
     public class ErrorViewModel
     {

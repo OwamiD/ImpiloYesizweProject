@@ -218,7 +218,27 @@
                 <p class="text-muted mb-4">
                     Your donation helps us continue providing care, food, education and support to those who need it most.
                 </p>
-                <a href="#contact" class="btn btn-success btn-lg px-5">Donate / Contact Us</a>
+
+                <!-- Bank Details Box -->
+                <div class="card border-0 shadow-sm p-4 mb-4 text-start">
+                    <h5 class="fw-bold text-success mb-3">Banking Details</h5>
+                    <p class="mb-1"><strong>Bank:</strong> FNB</p>
+                    <p class="mb-1"><strong>Account Name:</strong> ImpiloYesizwe Care Community Project</p>
+                    <p class="mb-1"><strong>Account Number:</strong> 1234567890</p>
+                    <p class="mb-1"><strong>Branch Code:</strong> 250655</p>
+                    <p class="mb-0"><strong>Reference:</strong> Your Name + Donation</p>
+                </div>
+
+                <p class="text-muted small mb-4">
+                    After donating, please send proof of payment to our WhatsApp or email so we can thank you.
+                </p>
+
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="#contact" class="btn btn-success btn-lg px-4">Contact Us</a>
+                    <a href="https://wa.me/27712667607" target="_blank" class="btn btn-outline-success btn-lg px-4">
+                        WhatsApp Us
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -234,23 +254,30 @@
 
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <form>
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success text-center">
+                        @TempData["Success"]
+                    </div>
+                }
+                <!-- Simple form - safe for now -->
+                <form method="post" asp-controller="Home" asp-action="Contact">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label">Full Name</label>
-                            <input type="text" class="form-control" placeholder="Your name" required>
+                            <input type="text" name="FullName" class="form-control" placeholder="Your name" required>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Email Address</label>
-                            <input type="email" class="form-control" placeholder="your@email.com" required>
+                            <input type="email" name="Email" class="form-control" placeholder="your@email.com" required>
                         </div>
                         <div class="col-12">
                             <label class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" placeholder="Optional">
+                            <input type="tel" name="Phone" class="form-control" placeholder="Optional">
                         </div>
                         <div class="col-12">
                             <label class="form-label">Message</label>
-                            <textarea class="form-control" rows="5" placeholder="How can we help you?" required></textarea>
+                            <textarea name="Message" class="form-control" rows="5" placeholder="How can we help you?" required></textarea>
                         </div>
                         <div class="col-12 text-center">
                             <button type="submit" class="btn btn-success btn-lg px-5">Send Message</button>

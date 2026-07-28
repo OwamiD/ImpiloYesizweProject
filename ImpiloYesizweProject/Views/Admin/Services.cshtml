@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+@model IEnumerable<ImpiloYesizweProject.Models.Service>
+
+@{
+    ViewData["Title"] = "Manage Services";
+}
+
+<div class="container py-5">
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2 class="text-success fw-bold">
+            Manage Services
+        </h2>
+
+        <a asp-action="AddService" class="btn btn-success">
+            + Add Service
+        </a>
+
+    </div>
+
+    <table class="table table-bordered table-hover shadow">
+
+        <thead class="table-success">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Icon</th>
+                <th width="180">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @if (Model.Any())
+            {
+                @foreach (var service in Model)
+                {
+                    <tr>
+
+                        <td>@service.Name</td>
+
+                        <td>@service.Description</td>
+
+                        <td style="font-size:24px;">
+                            @service.Icon
+                        </td>
+
+                        <td>
+
+                            <a asp-action="EditService"
+                               asp-route-id="@service.Id"
+                               class="btn btn-warning btn-sm">
+                                Edit
+                            </a>
+
+                            <a asp-action="DeleteService"
+                               asp-route-id="@service.Id"
+                               class="btn btn-danger btn-sm">
+                                Delete
+                            </a>
+
+                        </td>
+
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+
+                    <td colspan="4" class="text-center text-muted">
+                        No services found.
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

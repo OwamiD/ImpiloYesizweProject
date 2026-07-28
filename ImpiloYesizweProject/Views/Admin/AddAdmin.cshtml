@@ -1,0 +1,59 @@
+﻿@model ImpiloYesizweProject.Models.AdminUser
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Add Admin";
+}
+
+<div class="container py-5">
+
+    <div class="card shadow border-0">
+
+        <div class="card-body">
+
+            <h2 class="text-success mb-4">
+                Add New Administrator
+            </h2>
+
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["Success"]
+                </div>
+            }
+
+            <form asp-action="AddAdmin" method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label asp-for="FullName"></label>
+                    <input asp-for="FullName" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Username"></label>
+                    <input asp-for="Username" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" type="password" class="form-control" />
+                </div>
+
+                <button class="btn btn-success">
+                    Create Admin
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

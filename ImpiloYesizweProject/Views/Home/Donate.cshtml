@@ -1,0 +1,153 @@
+﻿@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["Success"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger text-center">
+        @TempData["Error"]
+    </div>
+}
+@model ImpiloYesizweProject.ViewModels.DonationViewModel
+
+@{
+    ViewData["Title"] = "Donate";
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-success">
+                Support Our Mission
+            </h1>
+
+            <p class="lead text-muted">
+                Every contribution helps us improve lives and strengthen communities.
+            </p>
+        </div>
+
+        <div class="row g-5">
+
+            <div class="col-lg-6">
+
+                <div class="card shadow border-0 h-100">
+                    <div class="card-body p-4">
+
+                        <h3 class="text-success mb-4">
+                            Why Donate?
+                        </h3>
+
+                        <p>
+                            Your support enables us to provide:
+                        </p>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">🍲 Food parcels for vulnerable families</li>
+                            <li class="list-group-item">📚 Educational support for children</li>
+                            <li class="list-group-item">🏥 Healthcare and home-based care</li>
+                            <li class="list-group-item">👨‍👩‍👧 Community outreach programmes</li>
+                            <li class="list-group-item">❤️ Hope to those who need it most</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="card shadow border-0">
+                    <div class="card-body p-4">
+
+                        <h3 class="text-success mb-4">
+                            Banking Details
+                        </h3>
+
+                        <table class="table">
+
+                            <tr>
+                                <th>Bank</th>
+                                <td>To be updated</td>
+                            </tr>
+
+                            <tr>
+                                <th>Account Name</th>
+                                <td>ImpiloYesizwe Care Community Project</td>
+                            </tr>
+
+                            <tr>
+                                <th>Account Number</th>
+                                <td>XXXXXXXXXX</td>
+                            </tr>
+
+                            <tr>
+                                <th>Branch Code</th>
+                                <td>XXXXXX</td>
+                            </tr>
+
+                        </table>
+
+                        <div class="text-center mt-4">
+
+                            <img src="~/images/Donate.jpg"
+                                 class="img-fluid"
+                                 style="max-width:200px;"
+                                 alt="Donate">
+
+                        </div>
+                        <hr class="my-4" />
+
+                        <h3 class="text-success mb-4">
+                            Make a Donation
+                        </h3>
+
+                        <form asp-action="Donate" method="post">
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                            <div class="mb-3">
+                                <label asp-for="DonorName" class="form-label"></label>
+                                <input asp-for="DonorName" class="form-control" />
+                                <span asp-validation-for="DonorName" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Amount" class="form-label"></label>
+                                <input asp-for="Amount" class="form-control" />
+                                <span asp-validation-for="Amount" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-success w-100">
+                                Donate
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

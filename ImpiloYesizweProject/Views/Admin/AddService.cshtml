@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+@model ImpiloYesizweProject.Models.Service
+
+@{
+    ViewData["Title"] = "Add Service";
+}
+
+<div class="container py-5">
+
+    <h2 class="text-success mb-4">
+        Add New Service
+    </h2>
+
+    <div class="card shadow border-0">
+        <div class="card-body">
+
+            <form asp-action="AddService" method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label"></label>
+                    <textarea asp-for="Description" rows="5" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Icon" class="form-label"></label>
+                    <input asp-for="Icon" class="form-control" placeholder="Example: ❤️ or bi-heart" />
+                    <span asp-validation-for="Icon" class="text-danger"></span>
+                </div>
+
+                <button class="btn btn-success">
+                    Save Service
+                </button>
+
+                <a asp-action="Services" class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
