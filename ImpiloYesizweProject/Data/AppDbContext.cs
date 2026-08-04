@@ -19,5 +19,14 @@ namespace ImpiloYesizweProject.Data
         public DbSet<Donation> Donations { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<AdminUser> AdminUsers { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Donation>()
+                .Property(d => d.Amount)
+                .HasPrecision(18, 2);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
+
 }

@@ -1,5 +1,7 @@
-using Microsoft.EntityFrameworkCore;
 using ImpiloYesizweProject.Data;
+using ImpiloYesizweProject.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +36,23 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
+// Automatically create/update the database
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+    if (!db.AdminUsers.Any())
+    {
+        db.AdminUsers.Add(new AdminUser
+        {
+            Username = "admin",
+            FullName = "System Administrator",
+            Email = "admin@impilo.com",
+            Password = BCrypt.Net.BCrypt.HashPassword("Admin@123")
+        });
 
+        db.SaveChanges();
+    }
+}
 
 app.Run();
