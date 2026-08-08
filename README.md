@@ -51,7 +51,8 @@ ImpiloYesizweProject
 ├── Program.cs
 └── appsettings.json
 ```
-
+## CI/CD
+This project uses GitHub Actions for continuous integration.
 ---
 
 ## 🚀 Running the Project
