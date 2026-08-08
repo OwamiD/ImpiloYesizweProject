@@ -96,13 +96,12 @@ Database tables are automatically created using EF Core Migrations when the appl
 
 > Password: **Admin@123**
 
-*(Change these credentials before deploying to production.)*
 
 ---
 
 ## 📷 Screenshots
 
-Add screenshots of:
+// screenshots of:
 
 - Home Page
 - About Page
