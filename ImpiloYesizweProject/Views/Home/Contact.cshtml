@@ -1,108 +1,258 @@
-﻿@if (TempData["Success"] != null)
-{
-    <div class="alert alert-success text-center">
-        @TempData["Success"]
-    </div>
-}
+﻿@model ImpiloYesizweProject.ViewModels.ContactViewModel
 
-@if (TempData["Error"] != null)
-{
-    <div class="alert alert-danger text-center">
-        @TempData["Error"]
-    </div>
-}
-@model ImpiloYesizweProject.ViewModels.ContactViewModel
-@if (TempData["Success"] != null)
-{
-    <div class="alert alert-success">
-        @TempData["Success"]
-    </div>
-}
 @{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Contact Us";
 }
 
-<section class="py-5">
+<!-- ==================== CONTACT PAGE HERO ==================== -->
+
+<section class="contact-page-hero">
 
     <div class="container">
 
-        <div class="text-center mb-5">
+        <span class="section-eyebrow">WE ARE HERE FOR YOU</span>
 
-            <h1 class="display-4 fw-bold text-success">
-                Contact Us
-            </h1>
+        <h1>
+            Let's <span>Connect.</span>
+        </h1>
 
-            <p class="lead text-muted">
-                We'd love to hear from you.
-            </p>
+        <p>
+            Have a question, need assistance or want to support
+            our community programmes? We'd love to hear from you.
+        </p>
 
+        <div class="contact-page-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <span>/</span>
+            <span>Contact Us</span>
         </div>
 
-        <div class="row">
+    </div>
 
+</section>
+
+<!-- ==================== CONTACT PAGE CONTENT ==================== -->
+
+<section class="contact-page-content">
+
+    <div class="container">
+
+        <div class="row g-4 align-items-stretch">
+
+            <!-- Contact Information -->
             <div class="col-lg-5">
 
-                <div class="card shadow border-0 p-4">
+                <div class="contact-page-information">
 
-                    <h3 class="text-success mb-4">
-                        Get In Touch
-                    </h3>
+                    <span class="contact-page-label">
+                        GET IN TOUCH
+                    </span>
 
-                    <p>
-                        📍 Durban, KwaZulu-Natal
+                    <h2>We'd Love to Hear From You</h2>
+
+                    <p class="contact-page-description">
+                        Whether you're looking for support,
+                        interested in volunteering or want to
+                        learn more about our work, our team
+                        welcomes your enquiry.
                     </p>
 
-                    <p>
-                        📞 +27 XX XXX XXXX
-                    </p>
+                    <div class="contact-page-detail">
 
-                    <p>
-                        📧 info@impiloyesizwe.org
-                    </p>
+                        <div class="contact-page-icon">📍</div>
 
-                    <p>
-                        Monday - Friday
-                        <br />
-                        08:00 - 16:30
-                    </p>
+                        <div>
+                            <span>LOCATION</span>
+                            <p>Durban, KwaZulu-Natal</p>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-page-detail">
+
+                        <div class="contact-page-icon">📞</div>
+
+                        <div>
+                            <span>PHONE / WHATSAPP</span>
+                            <a href="https://wa.me/27712667607"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                +27 71 266 7607
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-page-detail">
+
+                        <div class="contact-page-icon">📧</div>
+
+                        <div>
+                            <span>EMAIL</span>
+                            <a href="mailto:info@impiloyesizwe.org">
+                                info@impiloyesizwe.org
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-page-detail">
+
+                        <div class="contact-page-icon">🕒</div>
+
+                        <div>
+                            <span>OFFICE HOURS</span>
+                            <p>Monday – Friday</p>
+                            <p>08:00 – 16:30</p>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-page-note">
+                        💚 Every conversation is an opportunity
+                        to make a positive difference.
+                    </div>
+
+                    <a href="https://wa.me/27712667607"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="contact-page-whatsapp">
+                        Chat With Us on WhatsApp
+                        <span>→</span>
+                    </a>
 
                 </div>
 
             </div>
 
+            <!-- Contact Form -->
             <div class="col-lg-7">
 
-                <div class="card shadow border-0 p-4">
+                <div class="contact-page-form-card">
 
-                    <form asp-action="Contact" method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <div class="contact-page-form-heading">
 
-                        <div class="mb-3">
-                            <label asp-for="FullName" class="form-label"></label>
-                            <input asp-for="FullName" class="form-control" />
-                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        <span class="section-eyebrow">
+                            SEND US A MESSAGE
+                        </span>
+
+                        <h2>How Can We Help You?</h2>
+
+                        <p>
+                            Complete the form and share your
+                            enquiry with our team.
+                        </p>
+
+                    </div>
+
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success"
+                             role="status">
+                            @TempData["Success"]
+                        </div>
+                    }
+
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger"
+                             role="alert">
+                            @TempData["Error"]
+                        </div>
+                    }
+
+                    <form asp-controller="Home"
+                          asp-action="Contact"
+                          method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="Email" class="form-label"></label>
-                            <input asp-for="Email" class="form-control" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
+                        <div class="row g-3">
 
-                        <div class="mb-3">
-                            <label asp-for="Phone" class="form-label"></label>
-                            <input asp-for="Phone" class="form-control" />
-                        </div>
+                            <div class="col-12">
 
-                        <div class="mb-3">
-                            <label asp-for="Message" class="form-label"></label>
-                            <textarea asp-for="Message" class="form-control" rows="5"></textarea>
-                            <span asp-validation-for="Message" class="text-danger"></span>
-                        </div>
+                                <label asp-for="FullName"
+                                       class="form-label">
+                                </label>
 
-                        <button type="submit" class="btn btn-success">
-                            Send Message
-                        </button>
+                                <input asp-for="FullName"
+                                       class="form-control contact-page-input"
+                                       placeholder="Enter your full name"
+                                       autocomplete="name" />
+
+                                <span asp-validation-for="FullName"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="col-12">
+
+                                <label asp-for="Email"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="Email"
+                                       class="form-control contact-page-input"
+                                       placeholder="Enter your email address"
+                                       autocomplete="email" />
+
+                                <span asp-validation-for="Email"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="col-12">
+
+                                <label asp-for="Phone"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="Phone"
+                                       class="form-control contact-page-input"
+                                       placeholder="Enter your phone number"
+                                       autocomplete="tel" />
+
+                                <span asp-validation-for="Phone"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="col-12">
+
+                                <label asp-for="Message"
+                                       class="form-label">
+                                </label>
+
+                                <textarea asp-for="Message"
+                                          class="form-control contact-page-input"
+                                          rows="6"
+                                          placeholder="Write your message here...">
+                                </textarea>
+
+                                <span asp-validation-for="Message"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="col-12">
+
+                                <button type="submit"
+                                        class="contact-page-submit">
+
+                                    Send Message
+                                    <span>→</span>
+
+                                </button>
+
+                            </div>
+
+                        </div>
 
                     </form>
 
@@ -115,6 +265,7 @@
     </div>
 
 </section>
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

@@ -1,59 +1,156 @@
-﻿@{
-    ViewData["Title"] = "Gallery";
+﻿@model IEnumerable<ImpiloYesizweProject.Models.GalleryImage>
+@{
+    ViewData["Title"] = "Community Gallery";
 }
 
-<section class="py-5">
+<!-- ==================== GALLERY PAGE HERO ==================== -->
+
+<section class="gallery-page-hero">
 
     <div class="container">
 
-        <div class="text-center mb-5">
+        <span class="section-eyebrow">OUR COMMUNITY</span>
 
-            <h1 class="display-4 fw-bold text-success">
-                Community Gallery
-            </h1>
+        <h1>
+            Community <span>Gallery</span>
+        </h1>
 
-            <p class="lead text-muted">
-                Capturing moments of hope, care and community.
+        <p>
+            Capturing moments of hope, care and community.
+            Discover glimpses of the work and values behind
+            ImpiloYesizwe Care Community Project.
+        </p>
+
+        <div class="gallery-page-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <span>/</span>
+            <span>Gallery</span>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==================== GALLERY INTRODUCTION ==================== -->
+
+<section class="gallery-page-intro">
+
+    <div class="container">
+
+        <div class="gallery-page-intro-content text-center mx-auto">
+
+            <span class="section-eyebrow">OUR JOURNEY</span>
+
+            <h2>Every Picture Tells a Story</h2>
+
+            <p>
+                Our gallery offers a glimpse into the spirit of
+                community, compassion and support that guides
+                our organisation. Every moment represents the
+                importance of working together.
             </p>
 
         </div>
 
-        <div class="row g-4">
+    </div>
 
-            <div class="col-md-4">
-                <img src="~/images/gallery1.jpg"
-                     class="gallery-img"
-                     alt="Gallery">
-            </div>
+</section>
 
-            <div class="col-md-4">
-                <img src="~/images/gallery2.jpg"
-                     class="gallery-img"
-                     alt="Gallery">
-            </div>
+<!-- ==================== COMMUNITY PHOTOGRAPHS ==================== -->
 
-            <div class="col-md-4">
-                <img src="~/images/gallery3.jpg"
-                     class="gallery-img"
-                     alt="Gallery">
-            </div>
+<div class="gallery-page-grid">
 
-            <div class="col-md-4">
-                <img src="~/images/gallery4.jpg"
-                     class="gallery-img"
-                     alt="Gallery">
-            </div>
+    @if (Model != null && Model.Any())
+    {
+        var counter = 1;
 
-            <div class="col-md-4">
-                <img src="~/images/gallery5.jpg"
-                     class="gallery-img"
-                     alt="Gallery">
-            </div>
+        foreach (var image in Model)
+        {
+            <article class="gallery-page-card">
 
-            <div class="col-md-4">
-                <img src="~/images/gallery6.jpg"
-                     class="gallery-img"
-                     alt="Gallery">
+                <div class="gallery-page-image">
+
+                    <img src="@image.ImageUrl"
+                         loading="lazy"
+                         alt="@image.Title">
+
+                    <div class="gallery-image-overlay">
+                        <span>@counter.ToString("00")</span>
+                    </div>
+
+                </div>
+                <div class="gallery-page-caption">
+
+                    <span>
+                        @(string.IsNullOrWhiteSpace(image.Category)
+                            ? "COMMUNITY"
+                            : image.Category)
+                    </span>
+
+                    <h3>@image.Title</h3>
+
+                    <p>
+                        @(string.IsNullOrWhiteSpace(image.Description)
+                            ? "A moment from the ImpiloYesizwe community journey."
+                            : image.Description)
+                    </p>
+
+                    <small>
+                        Uploaded @image.DateUploaded.ToString("dd MMM yyyy")
+                    </small>
+
+                </div>
+
+            </article>
+
+            counter++;
+        }
+    }
+    else
+    {
+        <p class="text-center">
+            No community photographs have been uploaded yet.
+            Please check back soon.
+        </p>
+    }
+
+</div>
+
+<!-- ==================== GALLERY CALL TO ACTION ==================== -->
+
+<section class="gallery-page-cta">
+
+    <div class="container">
+
+        <div class="gallery-page-cta-content text-center">
+
+            <span class="section-eyebrow">
+                BE PART OF OUR STORY
+            </span>
+
+            <h2>
+                Together, We Can Make a Difference.
+            </h2>
+
+            <p>
+                Interested in our community programmes or
+                want to support our work? Get in touch with us.
+            </p>
+
+            <div class="gallery-page-cta-actions">
+
+                <a asp-controller="Home"
+                   asp-action="Contact"
+                   class="gallery-page-primary-btn">
+                    Contact Us <span>→</span>
+                </a>
+
+                <a asp-controller="Home"
+                   asp-action="Donate"
+                   class="gallery-page-secondary-btn">
+                    Support Our Work
+                </a>
+
             </div>
 
         </div>

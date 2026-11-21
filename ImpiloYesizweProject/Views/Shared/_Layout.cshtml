@@ -3,105 +3,270 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <meta name="description" content="ImpiloYesizwe Care Community Project – Supporting vulnerable children, families and communities through education, healthcare and social support." />
+
     <title>@ViewData["Title"] - ImpiloYesizwe</title>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ImpiloYesizweProject.styles.css" asp-append-version="true" />
 </head>
+
 <body>
 
-    <!-- NAVBAR -->
+    <!-- ================= NAVIGATION ================= -->
+    @{
+        var currentController =
+            ViewContext.RouteData.Values["controller"]?.ToString();
+
+        var currentAction =
+            ViewContext.RouteData.Values["action"]?.ToString();
+    }
+
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light site-navbar sticky-top">
+
             <div class="container">
-                <a class="navbar-brand fw-bold text-success fs-4" asp-controller="Home" asp-action="Index">
-                    IMPILOYESIZWE
+
+                <a class="navbar-brand site-brand"
+                   asp-controller="Home"
+                   asp-action="Index">
+
+                    <img src="~/images/hero.png"
+                         asp-append-version="true"
+                         alt="ImpiloYesizwe Care Community Project Logo"
+                         class="site-logo" />
+
+                    <span class="site-brand-text">
+                        <strong>IMPILOYESIZWE</strong>
+                        <small>CARE COMMUNITY PROJECT</small>
+                    </span>
+
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-                        aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="mainNavbar">
+
                     <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+
+                            <li class="nav-item">
+                                <a class="nav-link site-nav-link @(currentController == "Home" && currentAction == "Index" ? "active" : "")"
+                                   aria-current="@(currentController == "Home" && currentAction == "Index" ? "page" : null)"
+                                   asp-controller="Home"
+                                   asp-action="Index">
+                                    Home
+                                </a>
+                            </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link site-nav-link @(currentController == "Home" && currentAction == "About" ? "active" : "")"
+                               aria-current="@(currentController == "Home" && currentAction == "About" ? "page" : null)"
                                asp-controller="Home"
                                asp-action="About">
                                 About
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link site-nav-link @(currentController == "Home" && currentAction == "Services" ? "active" : "")"
+                               aria-current="@(currentController == "Home" && currentAction == "Services" ? "page" : null)"
                                asp-controller="Home"
                                asp-action="Services">
                                 Services
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link site-nav-link @(currentController == "Home" && currentAction == "Gallery" ? "active" : "")"
+                               aria-current="@(currentController == "Home" && currentAction == "Gallery" ? "page" : null)"
                                asp-controller="Home"
                                asp-action="Gallery">
                                 Gallery
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link site-nav-link @(currentController == "Home" && currentAction == "Contact" ? "active" : "")"
+                               aria-current="@(currentController == "Home" && currentAction == "Contact" ? "page" : null)"
                                asp-controller="Home"
                                asp-action="Contact">
                                 Contact
                             </a>
                         </li>
+
                         <li class="nav-item ms-lg-2">
-                            <a class="btn btn-success btn-sm px-3"
+                            <a class="btn site-donate-btn @(currentController == "Home" && currentAction == "Donate" ? "active" : "")"
+                               aria-current="@(currentController == "Home" && currentAction == "Donate" ? "page" : null)"
                                asp-controller="Home"
                                asp-action="Donate">
                                 Donate
                             </a>
+
                         </li>
+
                     </ul>
+
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main role="main" class="flex-grow-1">
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main role="main" id="main-content" class="site-main">
         @RenderBody()
     </main>
 
-    <!-- FOOTER -->
-    <footer class="footer border-top mt-auto">
-        <div class="container text-center py-4">
+    <!-- ================= FOOTER ================= -->
 
-            <p class="mb-1 fw-semibold text-success">
-                ImpiloYesizwe Care Community Project
-            </p>
+    <footer class="site-footer">
 
-            <p class="mb-0 text-muted small">
-                &copy; @DateTime.Now.Year – All rights reserved
-            </p>
+        <div class="container">
 
-            <div class="mt-2">
+            <div class="row g-5">
+
+                <!-- Organisation identity -->
+                <div class="col-lg-4">
+
+                    <a class="footer-brand"
+                       asp-controller="Home"
+                       asp-action="Index">
+
+                        <img src="~/images/hero.png"
+                             asp-append-version="true"
+                             alt="ImpiloYesizwe Logo">
+
+                        <span>
+                            <strong>IMPILOYESIZWE</strong>
+                            <small>CARE COMMUNITY PROJECT</small>
+                        </span>
+
+                    </a>
+
+                    <p class="footer-description">
+                        Supporting vulnerable children, families
+                        and individuals through community-driven
+                        care, education and social support.
+                    </p>
+
+                    <p class="footer-tagline">
+                        CARE. DIGNITY. OPPORTUNITY.
+                    </p>
+
+                </div>
+
+                <!-- Quick links -->
+                <div class="col-6 col-lg-4">
+
+                    <h3 class="footer-heading">Explore</h3>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a asp-controller="Home"
+                               asp-action="Index">Home</a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Home"
+                               asp-action="About">About Us</a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Home"
+                               asp-action="Services">Our Services</a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Home"
+                               asp-action="Gallery">Community Gallery</a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Home"
+                               asp-action="Donate">Donate</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Contact details -->
+                <div class="col-6 col-lg-4">
+
+                    <h3 class="footer-heading">Get In Touch</h3>
+
+                    <p class="footer-contact-text">
+                        Have a question or want to support
+                        our community work? We'd love to hear
+                        from you.
+                    </p>
+
+                    <a href="https://wa.me/27712667607"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="footer-contact-link">
+                        <span>📱</span>
+                        +27 71 266 7607
+                    </a>
+
+                    <a asp-controller="Home"
+                       asp-action="Contact"
+                       class="footer-contact-link">
+                        <span>✉️</span>
+                        Send Us a Message
+                    </a>
+
+                    <a asp-controller="Home"
+                       asp-action="Donate"
+                       class="footer-donate-btn">
+                        Support Our Work →
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Footer bottom -->
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; @DateTime.Now.Year
+                    ImpiloYesizwe Care Community Project.
+                    All rights reserved.
+                </p>
+
                 <a asp-controller="Admin"
                    asp-action="Login"
-                   class="text-muted small text-decoration-none">
+                   class="footer-admin-link">
                     Administrator Login
                 </a>
+
             </div>
 
         </div>
+
     </footer>
+
+
+    <!-- ================= SCRIPTS ================= -->
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

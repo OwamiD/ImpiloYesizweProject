@@ -1,54 +1,291 @@
-﻿@{
-    Layout = "_AdminLayout";
-}
-@model ImpiloYesizweProject.Models.GalleryImage
+﻿@model ImpiloYesizweProject.Models.GalleryImage
 
 @{
+    Layout = "_AdminLayout";
     ViewData["Title"] = "Add Gallery Image";
 }
 
-<div class="container py-5">
+<section class="admin-management-page">
 
-    <div class="card shadow border-0">
+    <div class="container admin-gallery-upload-container">
 
-        <div class="card-body">
+        <!-- Back Navigation -->
 
-            <h2 class="text-success mb-4">
-                Add Gallery Image
-            </h2>
+        <div class="admin-back-navigation">
 
-            <form asp-action="AddGallery"
+            <a asp-controller="Admin"
+               asp-action="Gallery"
+               class="admin-back-link">
+                <span>←</span>
+                Back to Gallery
+            </a>
+
+        </div>
+
+        <!-- Page Heading -->
+
+        <div class="admin-management-heading">
+
+            <div>
+                <span class="dashboard-eyebrow">
+                    ADMINISTRATION / MEDIA MANAGEMENT
+                </span>
+
+                <h1>Add Gallery Image</h1>
+
+                <p>
+                    Upload a photograph to share with
+                    visitors on the ImpiloYesizwe website.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Upload Card -->
+
+        <div class="admin-gallery-upload-card">
+
+            <div class="admin-gallery-upload-heading">
+
+                <div class="admin-management-panel-icon">
+                    🖼️
+                </div>
+
+                <div>
+                    <h2>Upload a Photograph</h2>
+                    <p>
+                        Add an image and give it a descriptive title.
+                    </p>
+                </div>
+
+            </div>
+
+            <form asp-controller="Admin"
+                  asp-action="AddGallery"
                   method="post"
                   enctype="multipart/form-data">
 
-                @Html.AntiForgeryToken()
-
-                <div class="mb-3">
-                    <label asp-for="Title" class="form-label"></label>
-                    <input asp-for="Title" class="form-control" />
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger">
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Select Image</label>
-                    <input type="file"
-                           name="imageFile"
-                           class="form-control"
-                           accept="image/*" />
+                <!-- Image Title -->
+
+                <div class="mb-4">
+
+                    <label asp-for="Title"
+                           class="form-label">
+                        Image Title
+                    </label>
+
+                    <input asp-for="Title"
+                           class="form-control admin-upload-input"
+                           placeholder="Example: Community Outreach Programme"
+                           maxlength="120"
+                           required />
+
+                    <span asp-validation-for="Title"
+                          class="text-danger">
+                    </span>
+
+                    <small class="admin-upload-help">
+                        Use a short, descriptive title.
+                    </small>
+
                 </div>
 
-                <button class="btn btn-success">
-                    Save Image
-                </button>
+                <!-- Image Description -->
+                <div class="mb-4">
 
-                <a asp-action="Gallery"
-                   class="btn btn-secondary">
-                    Cancel
-                </a>
+                    <label asp-for="Description" class="form-label">
+                        Image Description
+                    </label>
+
+                    <textarea asp-for="Description"
+                              class="form-control admin-upload-input"
+                              rows="4"
+                              maxlength="500"
+                              placeholder="Describe this photograph and the moment it captures..."></textarea>
+
+                    <span asp-validation-for="Description"
+                          class="text-danger">
+                    </span>
+
+                    <small class="admin-upload-help">
+                        Provide a short description of what is happening in the photograph.
+                        Maximum 500 characters.
+                    </small>
+
+                </div>
+
+                <!-- Image Category -->
+                <div class="mb-4">
+
+                    <label asp-for="Category" class="form-label">
+                        Photograph Category
+                    </label>
+
+                    <select asp-for="Category"
+                            class="form-select admin-upload-input"
+                            required>
+
+                        <option value="">Select a category</option>
+
+                        <option value="Community Outreach">Community Outreach</option>
+                        <option value="Education">Education</option>
+                        <option value="Food Support">Food Support</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Youth Development">Youth Development</option>
+                        <option value="Family Support">Family Support</option>
+                        <option value="Events">Events</option>
+                        <option value="Other">Other</option>
+
+                    </select>
+
+                    <span asp-validation-for="Category"
+                          class="text-danger">
+                    </span>
+
+                    <small class="admin-upload-help">
+                        Select the category that best describes this photograph.
+                    </small>
+
+                </div>
+
+                <!-- Image Selection -->
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Select Photograph
+                    </label>
+
+                    <div class="admin-image-upload-area">
+
+                        <div class="admin-image-upload-icon">
+                            📤
+                        </div>
+
+                        <h3>Select an Image</h3>
+
+                        <p>
+                            Choose a photograph from your computer.
+                        </p>
+
+                        <input type="file"
+                               id="imageFile"
+                               name="imageFile"
+                               class="form-control"
+                               accept=".jpg,.jpeg,.png,.webp"
+                               required />
+
+                        <small>
+                            JPG, PNG or WebP · Maximum 5 MB
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <!-- Image Preview -->
+
+                <div id="adminImagePreview"
+                     class="admin-image-preview-container"
+                     style="display:none;">
+
+                    <h4>Image Preview</h4>
+
+                    <img id="adminPreviewImage"
+                         alt="Selected gallery image preview" />
+
+                </div>
+
+                <!-- Actions -->
+
+                <div class="admin-upload-actions">
+
+                    <button type="submit"
+                            class="admin-upload-submit">
+
+                        <span>⬆️</span>
+                        Upload Photograph
+
+                    </button>
+
+                    <a asp-controller="Admin"
+                       asp-action="Gallery"
+                       class="admin-upload-cancel">
+                        Cancel
+                    </a>
+
+                </div>
 
             </form>
 
         </div>
 
+        <div class="admin-management-note">
+            <span>🔒</span>
+            Only upload photographs that the organisation
+            is authorised to publish.
+        </div>
+
     </div>
 
-</div>
+</section>
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        const imageInput = document.getElementById("imageFile");
+        const previewContainer =
+            document.getElementById("adminImagePreview");
+        const previewImage =
+            document.getElementById("adminPreviewImage");
+
+        let currentPreviewUrl = null;
+
+        imageInput.addEventListener("change", function () {
+
+            const file = this.files[0];
+
+            if (currentPreviewUrl) {
+                URL.revokeObjectURL(currentPreviewUrl);
+                currentPreviewUrl = null;
+            }
+
+            if (!file) {
+                previewContainer.style.display = "none";
+                previewImage.removeAttribute("src");
+                return;
+            }
+
+            const allowedTypes = [
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+            ];
+
+            if (!allowedTypes.includes(file.type)) {
+                alert("Please select a JPG, PNG or WebP image.");
+                this.value = "";
+                previewContainer.style.display = "none";
+                return;
+            }
+
+            if (file.size > 5 * 1024 * 1024) {
+                alert("The image cannot exceed 5 MB.");
+                this.value = "";
+                previewContainer.style.display = "none";
+                return;
+            }
+
+            currentPreviewUrl = URL.createObjectURL(file);
+
+            previewImage.src = currentPreviewUrl;
+            previewContainer.style.display = "block";
+        });
+    </script>
+}

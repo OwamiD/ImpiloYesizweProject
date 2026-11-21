@@ -1,290 +1,840 @@
-﻿@{
+﻿@model IEnumerable<ImpiloYesizweProject.Models.GalleryImage>
+@{
     ViewData["Title"] = "Home";
 }
 
-<!-- ==================== HERO SECTION ==================== -->
-<section class="hero py-5">
+
+<!-- ==================== REDESIGNED HERO ==================== -->
+<section class="hero hero-redesign">
     <div class="container">
-        <div class="row align-items-center gy-5">
-            <div class="col-lg-6">
-                <h1 class="display-4 fw-bold text-success mb-3">
-                    Together We Can Build Stronger Communities
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6 hero-copy">
+
+                <div class="hero-eyebrow">
+                    <span class="hero-dot"></span>
+                    COMMUNITY CARE • EDUCATION • SUPPORT
+                </div>
+
+                <h1>
+                    Stronger Communities Start With
+                    <span>Care and Opportunity.</span>
                 </h1>
-                <p class="lead text-muted mb-4">
-                    Helping vulnerable children, families and communities through education, healthcare and social support.
-                </p>
-                <div class="d-flex flex-wrap gap-3">
-                    <a href="#about" class="btn btn-success btn-lg px-4">Learn More</a>
-                    <a href="#donate" class="btn btn-outline-success btn-lg px-4">Donate Now</a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center">
-                <img src="~/images/hero.png"
-                     class="img-fluid rounded-3 shadow-sm"
-                     alt="ImpiloYesizwe Care Community Project Logo"
-                     style="max-height: 420px;">
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- ==================== SERVICES SECTION ==================== -->
-<section class="services py-5 bg-light" id="services">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold text-success">Our Services</h2>
-            <p class="text-muted col-lg-8 mx-auto">
-                We are committed to improving lives through community-based care and support.
-            </p>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm text-center p-4">
-                    <div class="display-4 mb-3">👨‍👩‍👧</div>
-                    <h4 class="fw-semibold">Child & Youth Care</h4>
-                    <p class="text-muted mb-0">
-                        Supporting children through education, homework assistance and youth development programmes.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm text-center p-4">
-                    <div class="display-4 mb-3">🥗</div>
-                    <h4 class="fw-semibold">Nutritional Support</h4>
-                    <p class="text-muted mb-0">
-                        Providing food parcels and nutritional assistance to vulnerable families in need.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm text-center p-4">
-                    <div class="display-4 mb-3">🏥</div>
-                    <h4 class="fw-semibold">Healthcare Support</h4>
-                    <p class="text-muted mb-0">
-                        HIV counselling, TB support and promoting healthy, resilient communities.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm text-center p-4">
-                    <div class="display-4 mb-3">🏠</div>
-                    <h4 class="fw-semibold">Home-Based Care</h4>
-                    <p class="text-muted mb-0">
-                        Caring for individuals who need practical and emotional support in their own homes.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm text-center p-4">
-                    <div class="display-4 mb-3">🤝</div>
-                    <h4 class="fw-semibold">Community Partnerships</h4>
-                    <p class="text-muted mb-0">
-                        Working with partners to strengthen healthcare access and overall community wellbeing.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm text-center p-4">
-                    <div class="display-4 mb-3">📚</div>
-                    <h4 class="fw-semibold">Education Support</h4>
-                    <p class="text-muted mb-0">
-                        Helping children stay in school with stationery, uniforms and after-school programmes.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ==================== OUR IMPACT ==================== -->
-<section class="impact py-5">
-    <div class="container">
-
-        <div class="text-center mb-5">
-            <h2 class="fw-bold text-success">Our Impact</h2>
-            <p class="text-muted">
-                Every act of kindness makes a difference.
-            </p>
-        </div>
-
-        <div class="row text-center">
-
-            <div class="col-md-3 mb-4">
-                <div class="impact-card">
-                    <h1 class="text-success fw-bold">500+</h1>
-                    <p>Families Supported</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-4">
-                <div class="impact-card">
-                    <h1 class="text-success fw-bold">300+</h1>
-                    <p>Children Assisted</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-4">
-                <div class="impact-card">
-                    <h1 class="text-success fw-bold">25+</h1>
-                    <p>Community Care Workers</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-4">
-                <div class="impact-card">
-                    <h1 class="text-success fw-bold">10+</h1>
-                    <p>Years of Service</p>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</section>
-<!-- ==================== GALLERY ==================== -->
-<section class="gallery py-5 bg-light" id="gallery">
-
-    <div class="container">
-
-        <div class="text-center mb-5">
-            <h2 class="fw-bold text-success">
-                Community Gallery
-            </h2>
-
-            <p class="text-muted">
-                Moments from our programmes and community outreach.
-            </p>
-        </div>
-
-        <div class="row g-4">
-
-            <div class="col-md-4">
-                <img src="~/images/gallery1.jpg"
-                     class="img-fluid rounded shadow"
-                     alt="Gallery Image">
-            </div>
-
-            <div class="col-md-4">
-                <img src="~/images/gallery2.jpg"
-                     class="img-fluid rounded shadow"
-                     alt="Gallery Image">
-            </div>
-
-            <div class="col-md-4">
-                <img src="~/images/gallery3.jpg"
-                     class="img-fluid rounded shadow"
-                     alt="Gallery Image">
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ==================== ABOUT SECTION ==================== -->
-<section class="about-section py-5" id="about">
-    <div class="container">
-        <div class="row align-items-center gy-4">
-            <div class="col-lg-6">
-                <h2 class="fw-bold text-success mb-3">About ImpiloYesizwe</h2>
-                <p>
-                    ImpiloYesizwe Care Community Project is a community-based organisation dedicated to supporting vulnerable children, families and individuals.
-                    We believe that every person deserves access to care, education and dignity.
-                </p>
-                <p>
-                    Through our various programmes — from nutritional support and home-based care to youth development — we work hand-in-hand with communities to create lasting positive change.
-                </p>
-                <a href="#contact" class="btn btn-success mt-2">Get In Touch</a>
-            </div>
-            <div class="col-lg-6 text-center">
-                <!-- You can add an about image later -->
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ==================== DONATE SECTION ==================== -->
-<section class="py-5 bg-light" id="donate">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-                <h2 class="fw-bold text-success mb-3">Support Our Work</h2>
-                <p class="text-muted mb-4">
-                    Your donation helps us continue providing care, food, education and support to those who need it most.
+                <p class="hero-description">
+                    ImpiloYesizwe Care Community Project is dedicated
+                    to supporting vulnerable children, families and
+                    individuals through community-driven care,
+                    education and social support.
                 </p>
 
-                <!-- Bank Details Box -->
-                <div class="card border-0 shadow-sm p-4 mb-4 text-start">
-                    <h5 class="fw-bold text-success mb-3">Banking Details</h5>
-                    <p class="mb-1"><strong>Bank:</strong> FNB</p>
-                    <p class="mb-1"><strong>Account Name:</strong> ImpiloYesizwe Care Community Project</p>
-                    <p class="mb-1"><strong>Account Number:</strong> 1234567890</p>
-                    <p class="mb-1"><strong>Branch Code:</strong> 250655</p>
-                    <p class="mb-0"><strong>Reference:</strong> Your Name + Donation</p>
-                </div>
+                <div class="hero-actions">
+                    <a href="#services" class="hero-primary-btn">
+                        Explore Our Services
+                        <span>→</span>
+                    </a>
 
-                <p class="text-muted small mb-4">
-                    After donating, please send proof of payment to our WhatsApp or email so we can thank you.
-                </p>
-
-                <div class="d-flex flex-wrap justify-content-center gap-3">
-                    <a href="#contact" class="btn btn-success btn-lg px-4">Contact Us</a>
-                    <a href="https://wa.me/27712667607" target="_blank" class="btn btn-outline-success btn-lg px-4">
-                        WhatsApp Us
+                    <a href="#donate" class="hero-secondary-btn">
+                        Support Our Work
                     </a>
                 </div>
+
+                <div class="hero-highlights">
+                    <span>✓ Child & Youth Care</span>
+                    <span>✓ Family Support</span>
+                    <span>✓ Community Development</span>
+                </div>
+
             </div>
+
+            <div class="col-lg-6">
+
+                <div class="hero-visual">
+
+                    <div class="hero-logo-card">
+                        <img src="~/images/hero.png"
+                             alt="ImpiloYesizwe Care Community Project Logo"
+                             class="hero-logo">
+                    </div>
+
+                    <div class="hero-caption">
+                        <span>CARE. DIGNITY. OPPORTUNITY.</span>
+                        <p>Building a stronger future together.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
     </div>
 </section>
 
-<!-- ==================== CONTACT SECTION ==================== -->
-<section class="py-5" id="contact">
+
+<!-- ==================== SERVICES SECTION ==================== -->
+
+<section class="services-section" id="services">
     <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold text-success">Contact Us</h2>
-            <p class="text-muted">We would love to hear from you</p>
+
+        <div class="services-heading text-center mx-auto">
+            <span class="section-eyebrow">WHAT WE DO</span>
+
+            <h2>Supporting Lives, Strengthening Communities</h2>
+
+            <p>
+                Through our community programmes, we provide practical
+                support and opportunities that help individuals and
+                families build a better future.
+            </p>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                @if (TempData["Success"] != null)
-                {
-                    <div class="alert alert-success text-center">
-                        @TempData["Success"]
-                    </div>
-                }
-                <!-- Simple form - safe for now -->
-                <form method="post" asp-controller="Home" asp-action="Contact">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Full Name</label>
-                            <input type="text" name="FullName" class="form-control" placeholder="Your name" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Email Address</label>
-                            <input type="email" name="Email" class="form-control" placeholder="your@email.com" required>
-                        </div>
-                        <div class="col-12">
-                            <label class="form-label">Phone Number</label>
-                            <input type="tel" name="Phone" class="form-control" placeholder="Optional">
-                        </div>
-                        <div class="col-12">
-                            <label class="form-label">Message</label>
-                            <textarea name="Message" class="form-control" rows="5" placeholder="How can we help you?" required></textarea>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-success btn-lg px-5">Send Message</button>
-                        </div>
-                    </div>
-                </form>
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-4">
+                <article class="service-card">
+                    <div class="service-icon">👨‍👩‍👧</div>
+                    <span class="service-number">01</span>
+
+                    <h3>Child &amp; Youth Care</h3>
+
+                    <p>
+                        Supporting children through education,
+                        homework assistance and youth development
+                        programmes.
+                    </p>
+                </article>
             </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="service-card">
+                    <div class="service-icon">🥗</div>
+                    <span class="service-number">02</span>
+
+                    <h3>Nutritional Support</h3>
+
+                    <p>
+                        Providing food parcels and nutritional
+                        assistance to vulnerable families in need.
+                    </p>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <span class="service-number">03</span>
+
+                    <h3>Healthcare Support</h3>
+
+                    <p>
+                        HIV counselling, TB support and promoting
+                        healthier, more resilient communities.
+                    </p>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <span class="service-number">04</span>
+
+                    <h3>Home-Based Care</h3>
+
+                    <p>
+                        Providing practical and emotional support
+                        to individuals who need care in their homes.
+                    </p>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <span class="service-number">05</span>
+
+                    <h3>Community Partnerships</h3>
+
+                    <p>
+                        Working with partners to strengthen
+                        healthcare access and community wellbeing.
+                    </p>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="service-card">
+                    <div class="service-icon">📚</div>
+                    <span class="service-number">06</span>
+
+                    <h3>Education Support</h3>
+
+                    <p>
+                        Helping children access stationery,
+                        uniforms and after-school programmes.
+                    </p>
+                </article>
+            </div>
+
         </div>
+
+        <div class="services-bottom text-center">
+            <p>Want to learn more about our programmes?</p>
+
+            <a asp-controller="Home"
+               asp-action="Contact"
+               class="services-contact-btn">
+                Talk to Our Team <span>→</span>
+            </a>
+        </div>
+
     </div>
+</section>
+
+
+<!-- ==================== OUR IMPACT ==================== -->
+
+<section class="impact-section" id="impact">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <!-- Introduction -->
+            <div class="col-lg-5">
+
+                <div class="impact-intro">
+
+                    <span class="section-eyebrow">
+                        OUR PURPOSE
+                    </span>
+
+                    <h2>
+                        Creating Change.
+                        <span>Building Hope.</span>
+                    </h2>
+
+                    <p>
+                        At ImpiloYesizwe, we believe that stronger
+                        communities begin when people support one
+                        another.
+                    </p>
+
+                    <p>
+                        Through care, education, nutritional
+                        assistance and community partnerships,
+                        we work towards a better future for
+                        everyone.
+                    </p>
+
+                    <a asp-controller="Home"
+                       asp-action="About"
+                       class="impact-button">
+                        Discover Our Mission
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Impact Areas -->
+            <div class="col-lg-7">
+
+                <div class="row g-3">
+
+                    <div class="col-sm-6">
+                        <article class="impact-card">
+
+                            <div class="impact-icon">👨‍👩‍👧</div>
+
+                            <h3>Stronger Families</h3>
+
+                            <p>
+                                Encouraging family wellbeing
+                                through practical assistance,
+                                care and support.
+                            </p>
+
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <article class="impact-card">
+
+                            <div class="impact-icon">🌱</div>
+
+                            <h3>Supported Children</h3>
+
+                            <p>
+                                Promoting children's development
+                                through education and youth
+                                support programmes.
+                            </p>
+
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <article class="impact-card">
+
+                            <div class="impact-icon">❤️</div>
+
+                            <h3>Healthier Communities</h3>
+
+                            <p>
+                                Promoting dignity, healthcare
+                                awareness and community-based
+                                support.
+                            </p>
+
+                        </article>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <article class="impact-card">
+
+                            <div class="impact-icon">📚</div>
+
+                            <h3>Learning Opportunities</h3>
+
+                            <p>
+                                Supporting access to educational
+                                resources and opportunities
+                                for young people.
+                            </p>
+
+                        </article>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================== COMMUNITY GALLERY ==================== -->
+
+<div class="row g-4">
+
+    @if (Model != null && Model.Any())
+    {
+        foreach (var image in Model)
+        {
+            <div class="col-md-6 col-lg-4">
+                <article class="gallery-card">
+
+                    <div class="gallery-image-wrap">
+                        <img src="@image.ImageUrl"
+                             loading="lazy"
+                             alt="@image.Title">
+                    </div>
+
+                    <div class="gallery-card-body">
+
+                        <span class="gallery-category">
+                            @(string.IsNullOrWhiteSpace(image.Category)
+                                ? "COMMUNITY"
+                                : image.Category)
+                        </span>
+
+                        <h3>@image.Title</h3>
+
+                        <p>
+                            @(string.IsNullOrWhiteSpace(image.Description)
+                                ? "A moment from the ImpiloYesizwe community journey."
+                                : image.Description)
+                        </p>
+
+                        <small class="text-muted d-block mt-2">
+                            Uploaded @image.DateUploaded.ToString("dd MMM yyyy")
+                        </small>
+
+                    </div>
+
+                </article>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-12 text-center">
+            <p>
+                Our community photographs will be shared here soon.
+            </p>
+        </div>
+    }
+
+</div>
+
+
+<!-- ==================== ABOUT IMPILO YESIZWE ==================== -->
+
+<section class="about-section" id="about">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <!-- Organisation introduction -->
+            <div class="col-lg-6">
+
+                <div class="about-content">
+
+                    <span class="section-eyebrow">
+                        GET TO KNOW US
+                    </span>
+
+                    <h2>
+                        A Community Built on
+                        <span>Care and Compassion.</span>
+                    </h2>
+
+                    <p class="about-lead">
+                        ImpiloYesizwe Care Community Project is a
+                        community-based organisation committed to
+                        supporting vulnerable children, families
+                        and individuals.
+                    </p>
+
+                    <p>
+                        We believe every person deserves dignity,
+                        opportunity and access to support. Through
+                        community-driven care, education, nutritional
+                        assistance and healthcare support, we strive
+                        to make a meaningful difference.
+                    </p>
+
+                    <p>
+                        Our approach is built on working together,
+                        strengthening communities and creating
+                        opportunities for a better future.
+                    </p>
+
+                    <a asp-controller="Home"
+                       asp-action="Contact"
+                       class="about-button">
+                        Connect With Us
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Mission and vision -->
+            <div class="col-lg-6">
+
+                <div class="about-information">
+
+                    <article class="about-info-card mission-card">
+
+                        <div class="about-info-icon">🎯</div>
+
+                        <div>
+                            <span class="about-card-label">
+                                OUR MISSION
+                            </span>
+
+                            <h3>Making Care Accessible</h3>
+
+                            <p>
+                                To support vulnerable children,
+                                families and individuals through
+                                community-based care, education,
+                                healthcare support and practical
+                                assistance.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <article class="about-info-card vision-card">
+
+                        <div class="about-info-icon">🌍</div>
+
+                        <div>
+                            <span class="about-card-label">
+                                OUR VISION
+                            </span>
+
+                            <h3>A Stronger Future Together</h3>
+
+                            <p>
+                                To contribute towards healthier,
+                                more empowered and supportive
+                                communities where everyone has
+                                the opportunity to thrive.
+                            </p>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Core values -->
+        <div class="about-values">
+
+            <div class="text-center mb-4">
+                <span class="section-eyebrow">WHAT GUIDES US</span>
+                <h3>Our Core Values</h3>
+            </div>
+
+            <div class="row g-3">
+
+                <div class="col-6 col-lg-3">
+                    <div class="value-item">
+                        <span>❤️</span>
+                        <h4>Compassion</h4>
+                        <p>We care about people and their wellbeing.</p>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="value-item">
+                        <span>🤝</span>
+                        <h4>Unity</h4>
+                        <p>We believe in working together.</p>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="value-item">
+                        <span>⚖️</span>
+                        <h4>Dignity</h4>
+                        <p>We respect every individual's worth.</p>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="value-item">
+                        <span>🌱</span>
+                        <h4>Opportunity</h4>
+                        <p>We encourage growth and development.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================== DONATE SECTION ==================== -->
+
+<section class="donate-section" id="donate">
+
+    <div class="container">
+
+        <div class="donate-wrapper">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-7">
+
+                    <span class="section-eyebrow">
+                        BE PART OF THE CHANGE
+                    </span>
+
+                    <h2>
+                        Your Support Can
+                        <span>Make a Difference.</span>
+                    </h2>
+
+                    <p class="donate-description">
+                        Every contribution helps support our
+                        commitment to vulnerable children,
+                        families and individuals.
+                    </p>
+
+                    <p class="donate-description">
+                        By supporting ImpiloYesizwe, you become
+                        part of a community working towards
+                        greater care, dignity and opportunity.
+                    </p>
+
+                    <div class="donate-benefits">
+
+                        <div>
+                            <span>✓</span>
+                            Support community programmes
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Help vulnerable families
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Encourage education and development
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="donate-card">
+
+                        <div class="donate-card-icon">💚</div>
+
+                        <h3>Make a Donation</h3>
+
+                        <p>
+                            Your contribution helps us continue supporting
+                            vulnerable children, families and communities.
+                        </p>
+
+                        <div class="bank-details">
+
+                            <h4>Official Banking Details</h4>
+
+                            <div class="bank-detail-row">
+                                <span>Bank</span>
+                                <strong>FNB</strong>
+                            </div>
+
+                            <div class="bank-detail-row">
+                                <span>Account Name</span>
+                                <strong>ImpiloYesizwe Care Community Project</strong>
+                            </div>
+
+                            <div class="bank-detail-row">
+                                <span>Account Number</span>
+                                <strong>1234567890</strong>
+                            </div>
+
+                            <div class="bank-detail-row">
+                                <span>Branch Code</span>
+                                <strong>250655</strong>
+                            </div>
+
+                            <div class="bank-detail-row">
+                                <span>Reference</span>
+                                <strong>Your Name + Donation</strong>
+                            </div>
+
+                        </div>
+
+                        <a href="https://wa.me/27712667607"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="donate-whatsapp-btn">
+
+                            Send Proof of Payment
+                            <span>→</span>
+
+                        </a>
+
+                        <div class="donate-trust-note">
+                            💚 Thank you for supporting our community.
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================== CONTACT SECTION ==================== -->
+
+<section class="contact-section" id="contact">
+
+    <div class="container">
+
+        <div class="contact-heading text-center mx-auto">
+            <span class="section-eyebrow">WE ARE HERE FOR YOU</span>
+
+            <h2>Let's Start a Conversation</h2>
+
+            <p>
+                Have a question, need support or want to work with us?
+                We'd love to hear from you.
+            </p>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+
+            <!-- Contact Information -->
+            <div class="col-lg-5">
+
+                <div class="contact-information">
+
+                    <span class="contact-info-label">
+                        GET IN TOUCH
+                    </span>
+
+                    <h3>Connect With Our Team</h3>
+
+                    <p class="contact-info-description">
+                        Reach out to ImpiloYesizwe Care Community
+                        Project. We're ready to hear from you.
+                    </p>
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">📱</div>
+
+                        <div>
+                            <span>WHATSAPP / PHONE</span>
+                            <a href="https://wa.me/27712667607"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                +27 71 266 7607
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">💬</div>
+
+                        <div>
+                            <span>QUICK ENQUIRIES</span>
+                            <p>Send our team a WhatsApp message.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-social-note">
+                        <span>💚</span>
+                        <p>
+                            Every conversation is an opportunity
+                            to make a positive difference.
+                        </p>
+                    </div>
+
+                    <a href="https://wa.me/27712667607"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="contact-whatsapp-btn">
+                        Chat With Us on WhatsApp
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+
+                <div class="contact-form-card">
+
+                    <div class="contact-form-heading">
+                        <h3>Send Us a Message</h3>
+                        <p>
+                            Complete the form below and we'll
+                            get back to you.
+                        </p>
+                    </div>
+
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success text-center" role="status">
+                            @TempData["Success"]
+                        </div>
+                    }
+
+                    <form method="post"
+                          asp-controller="Home"
+                          asp-action="Contact">
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <label for="FullName" class="form-label">
+                                    Full Name
+                                </label>
+
+                                <input type="text"
+                                       id="FullName"
+                                       name="FullName"
+                                       class="form-control contact-input"
+                                       placeholder="Enter your full name"
+                                       autocomplete="name"
+                                       required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="Email" class="form-label">
+                                    Email Address
+                                </label>
+
+                                <input type="email"
+                                       id="Email"
+                                       name="Email"
+                                       class="form-control contact-input"
+                                       placeholder="Enter your email"
+                                       autocomplete="email"
+                                       required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="Phone" class="form-label">
+                                    Phone Number <span>(Optional)</span>
+                                </label>
+
+                                <input type="tel"
+                                       id="Phone"
+                                       name="Phone"
+                                       class="form-control contact-input"
+                                       placeholder="Enter your phone number"
+                                       autocomplete="tel">
+                            </div>
+
+                            <div class="col-12">
+                                <label for="Message" class="form-label">
+                                    Your Message
+                                </label>
+
+                                <textarea id="Message"
+                                          name="Message"
+                                          class="form-control contact-input"
+                                          rows="5"
+                                          placeholder="How can we help you?"
+                                          required></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit"
+                                        class="contact-submit-btn">
+                                    Send Message
+                                    <span>→</span>
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </section>

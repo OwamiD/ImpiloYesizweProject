@@ -16,7 +16,12 @@ namespace ImpiloYesizweProject.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var images = _context.GalleryImages
+                .OrderByDescending(image => image.DateUploaded)
+                .Take(3)
+                .ToList();
+
+            return View(images);
         }
 
         public IActionResult About()
@@ -31,7 +36,11 @@ namespace ImpiloYesizweProject.Controllers
 
         public IActionResult Gallery()
         {
-            return View();
+            var images = _context.GalleryImages
+                .OrderByDescending(image => image.DateUploaded)
+                .ToList();
+
+            return View(images);
         }
 
         // GET
@@ -91,7 +100,7 @@ namespace ImpiloYesizweProject.Controllers
                     {
                         FullName = model.FullName,
                         Email = model.Email,
-                        Phone = model.Phone,
+                        Phone = model.Phone ?? string.Empty,
                         Message = model.Message,
                         DateSent = DateTime.Now
                     };

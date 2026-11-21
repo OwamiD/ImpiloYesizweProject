@@ -1,89 +1,209 @@
 ﻿@{
-    ViewData["Title"] = "Services";
+    ViewData["Title"] = "Our Services";
 }
 
-<section class="py-5 bg-light">
+<!-- ==================== SERVICES PAGE HERO ==================== -->
+
+<section class="services-page-hero">
+
     <div class="container">
 
-        <div class="text-center mb-5">
-            <h1 class="display-4 fw-bold text-success">
-                Our Services
-            </h1>
+        <span class="section-eyebrow">OUR PROGRAMMES</span>
 
-            <p class="lead text-muted">
-                Empowering communities through sustainable programmes.
-            </p>
+        <h1>
+            Our Services,
+            <span>Our Commitment.</span>
+        </h1>
+
+        <p>
+            Empowering communities through sustainable programmes,
+            compassionate care and meaningful support.
+        </p>
+
+        <div class="services-page-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <span>/</span>
+            <span>Our Services</span>
         </div>
 
+    </div>
+
+</section>
+
+<!-- ==================== SERVICES INTRODUCTION ==================== -->
+
+<section class="services-page-intro">
+
+    <div class="container">
+
+        <div class="services-page-intro-content text-center mx-auto">
+
+            <span class="section-eyebrow">HOW WE HELP</span>
+
+            <h2>
+                Supporting People at Every Stage of Life
+            </h2>
+
+            <p>
+                Our programmes focus on healthcare, education,
+                family wellbeing and community development.
+                Through these areas of support, we aim to help
+                individuals and families access opportunities
+                and build stronger communities.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==================== OUR PROGRAMMES ==================== -->
+
+<section class="services-page-programmes">
+    <div class="container">
         <div class="row g-4">
 
-            <div class="col-md-4">
-                <div class="card h-100 shadow border-0 p-4 text-center">
-                    <div class="display-3">🏥</div>
-                    <h3 class="mt-3">Healthcare</h3>
-                    <p>
-                        HIV counselling, TB support,
-                        wellness programmes and home-based care.
-                    </p>
-                </div>
+            <!-- Healthcare -->
+            <div class="col-md-6 col-lg-4">
+                <article class="services-page-card">
+                    <div class="services-page-card-top">
+                        <div class="services-page-icon">🏥</div>
+                        <span class="services-page-number">01</span>
+                    </div>
+                    <span class="services-page-category">HEALTH & WELLBEING</span>
+                    <h3>Healthcare</h3>
+                    <p>HIV counselling, TB support, wellness programmes and home-based care.</p>
+                    <a asp-controller="Home" asp-action="Contact" class="services-page-link">
+                        Enquire About Support <span>→</span>
+                    </a>
+                </article>
             </div>
 
-            <div class="col-md-4">
-                <div class="card h-100 shadow border-0 p-4 text-center">
-                    <div class="display-3">📚</div>
-                    <h3 class="mt-3">Education</h3>
-                    <p>
-                        School support, youth development,
-                        homework assistance and life skills.
-                    </p>
-                </div>
+            <!-- Education -->
+            <div class="col-md-6 col-lg-4">
+                <article class="services-page-card">
+                    <div class="services-page-card-top">
+                        <div class="services-page-icon">📚</div>
+                        <span class="services-page-number">02</span>
+                    </div>
+                    <span class="services-page-category">LEARNING & DEVELOPMENT</span>
+                    <h3>Education</h3>
+                    <p>School support, youth development, homework assistance and life skills.</p>
+                    <a asp-controller="Home" asp-action="Contact" class="services-page-link">
+                        Enquire About Support <span>→</span>
+                    </a>
+                </article>
             </div>
 
-            <div class="col-md-4">
-                <div class="card h-100 shadow border-0 p-4 text-center">
-                    <div class="display-3">🥗</div>
-                    <h3 class="mt-3">Nutrition</h3>
-                    <p>
-                        Food parcels and nutritional support
-                        for vulnerable families.
-                    </p>
-                </div>
+            <!-- Nutrition -->
+            <div class="col-md-6 col-lg-4">
+                <article class="services-page-card">
+                    <div class="services-page-card-top">
+                        <div class="services-page-icon">🥗</div>
+                        <span class="services-page-number">03</span>
+                    </div>
+                    <span class="services-page-category">FAMILY WELLBEING</span>
+                    <h3>Nutrition</h3>
+                    <p>Food parcels and nutritional support for vulnerable families.</p>
+                    <a asp-controller="Home" asp-action="Contact" class="services-page-link">
+                        Enquire About Support <span>→</span>
+                    </a>
+                </article>
             </div>
 
-            <div class="col-md-4">
-                <div class="card h-100 shadow border-0 p-4 text-center">
-                    <div class="display-3">👨‍👩‍👧</div>
-                    <h3 class="mt-3">Family Support</h3>
-                    <p>
-                        Counselling, family assistance
-                        and social support programmes.
-                    </p>
-                </div>
+            <!-- Family Support -->
+            <div class="col-md-6 col-lg-4">
+                <article class="services-page-card">
+                    <div class="services-page-card-top">
+                        <div class="services-page-icon">👨‍👩‍👧</div>
+                        <span class="services-page-number">04</span>
+                    </div>
+                    <span class="services-page-category">FAMILY CARE</span>
+                    <h3>Family Support</h3>
+                    <p>Counselling, family assistance and social support programmes.</p>
+                    <a asp-controller="Home" asp-action="Contact" class="services-page-link">
+                        Enquire About Support <span>→</span>
+                    </a>
+                </article>
             </div>
 
-            <div class="col-md-4">
-                <div class="card h-100 shadow border-0 p-4 text-center">
-                    <div class="display-3">🤝</div>
-                    <h3 class="mt-3">Community Outreach</h3>
-                    <p>
-                        Community development,
-                        awareness campaigns and volunteer programmes.
-                    </p>
-                </div>
+            <!-- Community Outreach -->
+            <div class="col-md-6 col-lg-4">
+                <article class="services-page-card">
+                    <div class="services-page-card-top">
+                        <div class="services-page-icon">🤝</div>
+                        <span class="services-page-number">05</span>
+                    </div>
+                    <span class="services-page-category">COMMUNITY DEVELOPMENT</span>
+                    <h3>Community Outreach</h3>
+                    <p>Community development, awareness campaigns and volunteer programmes.</p>
+                    <a asp-controller="Home" asp-action="Contact" class="services-page-link">
+                        Enquire About Support <span>→</span>
+                    </a>
+                </article>
             </div>
 
-            <div class="col-md-4">
-                <div class="card h-100 shadow border-0 p-4 text-center">
-                    <div class="display-3">❤️</div>
-                    <h3 class="mt-3">Care Programmes</h3>
-                    <p>
-                        Providing hope, dignity
-                        and compassionate care to those in need.
-                    </p>
-                </div>
+            <!-- Care Programmes -->
+            <div class="col-md-6 col-lg-4">
+                <article class="services-page-card">
+                    <div class="services-page-card-top">
+                        <div class="services-page-icon">❤️</div>
+                        <span class="services-page-number">06</span>
+                    </div>
+                    <span class="services-page-category">COMPASSIONATE CARE</span>
+                    <h3>Care Programmes</h3>
+                    <p>Providing hope, dignity and compassionate care to those in need.</p>
+                    <a asp-controller="Home" asp-action="Contact" class="services-page-link">
+                        Enquire About Support <span>→</span>
+                    </a>
+                </article>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SERVICES PAGE CTA ==================== -->
+
+<section class="services-page-cta">
+
+    <div class="container">
+
+        <div class="services-page-cta-content text-center">
+
+            <span class="section-eyebrow">
+                LET'S WORK TOGETHER
+            </span>
+
+            <h2>
+                Interested in Our Programmes?
+            </h2>
+
+            <p>
+                Whether you need assistance, want to volunteer
+                or are interested in supporting our work,
+                we would love to hear from you.
+            </p>
+
+            <div class="services-page-cta-actions">
+
+                <a asp-controller="Home"
+                   asp-action="Contact"
+                   class="services-page-primary-btn">
+                    Contact Our Team <span>→</span>
+                </a>
+
+                <a asp-controller="Home"
+                   asp-action="Donate"
+                   class="services-page-secondary-btn">
+                    Support Our Work
+                </a>
+
             </div>
 
         </div>
 
     </div>
+
 </section>

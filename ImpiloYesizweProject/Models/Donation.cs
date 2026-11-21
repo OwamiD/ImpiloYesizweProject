@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
 
 namespace ImpiloYesizweProject.Models
 {
@@ -19,5 +20,16 @@ namespace ImpiloYesizweProject.Models
 
         public DateTime DonationDate { get; set; } = DateTime.Now;
 
+        // Donation record protection
+        public bool IsVoided { get; set; } = false;
+
+        // Audit information for voided donations
+        public DateTime? VoidedAtUtc { get; set; }
+
+        [MaxLength(100)]
+        public string? VoidedBy { get; set; }
+
+        [MaxLength(500)]
+        public string? VoidReason { get; set; }
     }
 }

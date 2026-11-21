@@ -1,75 +1,268 @@
-﻿@{
-    Layout = "_AdminLayout";
-}
-@model IEnumerable<ImpiloYesizweProject.Models.Donation>
+﻿@model IEnumerable<ImpiloYesizweProject.Models.Donation>
 
 @{
+    Layout = "_AdminLayout";
     ViewData["Title"] = "Donations";
+
+    var donations = Model?.ToList()
+    ?? new List<ImpiloYesizweProject.Models.Donation>();
+
+    var activeDonations = donations
+        .Where(d => !d.IsVoided)
+        .ToList();
+
+    var voidedDonations = donations
+        .Where(d => d.IsVoided)
+        .ToList();
+
+    var totalAmount = activeDonations.Sum(d => d.Amount);
 }
 
-<div class="container py-5">
+<section class="admin-management-page">
 
-    <div class="card shadow border-0">
-        <div class="card-body">
+    <div class="container-fluid admin-management-container">
 
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="text-success">Donations</h2>
+        <!-- Back to Dashboard -->
+
+        <div class="admin-back-navigation">
+
+            <a asp-controller="Admin"
+               asp-action="Index"
+               class="admin-back-link">
+                <span>←</span>
+                Back to Dashboard
+            </a>
+
+        </div>
+
+        <!-- Page Heading -->
+
+        <div class="admin-management-heading">
+
+            <div>
+                <span class="dashboard-eyebrow">
+                    ADMINISTRATION / FINANCIAL RECORDS
+                </span>
+
+                <h1>Donation Management</h1>
+
+                <p>
+                    Review and manage donation records
+                    submitted through the organisation's website.
+                </p>
             </div>
 
-            <div class="table-responsive">
-                <table class="table table-hover table-bordered align-middle mb-0">
+            <div class="admin-record-count">
+                <span>TOTAL DONATIONS</span>
+                <strong>@donations.Count</strong>
+            </div>
 
-                    <thead class="table-success">
-                        <tr>
-                            <th>Donor</th>
-                            <th>Email</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
+        </div>
 
-                    <tbody>
+        <!-- Summary Card -->
 
-                        @if (Model.Any())
-                        {
-                            @foreach (var item in Model)
+        <div class="donations-summary-card">
+
+            <div class="donations-summary-icon">💚</div>
+
+            <div>
+                <span>ACTIVE DONATION TOTAL</span>
+
+                <h2>R @totalAmount.ToString("N2")</h2>
+
+                <p>
+                    @activeDonations.Count active record(s) ·
+                    @voidedDonations.Count voided record(s)
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Donations Table -->
+
+        <div class="admin-management-panel">
+
+            <div class="admin-management-panel-heading">
+
+                <div>
+                    <span class="admin-management-panel-icon">💰</span>
+
+                    <div>
+                        <h2>Donation Records</h2>
+                        <p>Donor information and contribution history</p>
+                    </div>
+                </div>
+
+                <span class="admin-record-badge">
+                    @donations.Count record(s)
+                </span>
+
+            </div>
+
+            <!-- Notifications -->
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success m-3" role="status">
+                    @TempData["Success"]
+                </div>
+            }
+
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger m-3" role="alert">
+                    @TempData["Error"]
+                </div>
+            }
+
+            @if (donations.Any())
+            {
+                <div class="admin-management-table-wrapper">
+
+                    <table class="table admin-management-table donations-table">
+
+                        <thead>
+                            <tr>
+                                <th>DONOR</th>
+                                <th>EMAIL ADDRESS</th>
+                                <th>CONTRIBUTION</th>
+                                <th>DATE RECORDED</th>
+                                <th>STATUS</th>
+                                <th class="text-end">ACTION</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var item in donations)
                             {
                                 <tr>
-                                    <td>@item.DonorName</td>
-                                    <td>@item.Email</td>
-                                    <td class="text-center">
-                                        R @item.Amount.ToString("N2")
-                                    </td>
 
-                                    <td class="text-center">
-                                        @item.DonationDate.ToString("dd MMM yyyy")
+                                    <td>
+                                        <div class="donation-donor">
+                                            <div class="donation-donor-icon">
+                                                👤
+                                            </div>
+
+                                            <strong>@item.DonorName</strong>
+                                        </div>
                                     </td>
 
                                     <td>
-                                        <a asp-action="DeleteDonation"
-                                           asp-route-id="@item.Id"
-                                           class="btn btn-danger btn-sm"
-                                           onclick="return confirm('Are you sure you want to delete this donation?');">
-                                            Delete
+                                        <a href="mailto:@item.Email"
+                                           class="donation-email">
+                                            @item.Email
                                         </a>
                                     </td>
+
+                                    <td>
+                                        <span class="donation-amount">
+                                            R @item.Amount.ToString("N2")
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span class="donation-date">
+                                            @item.DonationDate.ToString("dd MMM yyyy")
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        @if (item.IsVoided)
+                                        {
+                                            <span class="donation-status-voided">
+                                                VOIDED
+                                            </span>
+
+                                            <small class="donation-void-reason">
+                                                Reason: @item.VoidReason
+                                            </small>
+
+                                            <small class="donation-void-reason">
+                                                By: @item.VoidedBy
+                                            </small>
+                                        }
+                                        else
+                                        {
+                                            <span class="donation-status-active">
+                                                ACTIVE
+                                            </span>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        @if (!item.IsVoided)
+                                        {
+                                            <form asp-controller="Admin"
+                                                  asp-action="VoidDonation"
+                                                  asp-route-id="@item.Id"
+                                                  method="post"
+                                                  onsubmit="return confirm('Are you sure you want to void this donation?');">
+
+                                                <div class="donation-void-form">
+
+                                                    <input type="text"
+                                                           name="reason"
+                                                           class="form-control form-control-sm"
+                                                           placeholder="Reason for voiding"
+                                                           maxlength="500"
+                                                           required />
+
+                                                    <button type="submit"
+                                                            class="donation-void-btn">
+                                                        Void
+                                                    </button>
+
+                                                </div>
+
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <span class="admin-no-value">No action available</span>
+                                        }
+                                    </td>
+
                                 </tr>
                             }
-                        }
-                        else
-                        {
-                            <tr>
-                                <td colspan="5" class="text-center text-muted">
-                                    No donations have been recorded yet.
-                                </td>
-                            </tr>
-                        }
-                 </tbody>
-                
-                </table>
-            </div>
-            </div>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            }
+            else
+            {
+                <div class="admin-management-empty">
+
+                    <div class="admin-empty-icon">💚</div>
+
+                    <h3>No Donations Recorded Yet</h3>
+
+                    <p>
+                        Donation records submitted through the
+                        public website will appear here.
+                    </p>
+
+                    <a asp-controller="Home"
+                       asp-action="Donate"
+                       class="admin-empty-link">
+                        View Donation Page →
+                    </a>
+
+                </div>
+            }
+
+        </div>
+
+        <!-- Information Note -->
+
+        <div class="admin-management-note">
+            <span>🔒</span>
+            Donor information and financial records should
+            be handled confidentially.
         </div>
 
     </div>
+
+</section>

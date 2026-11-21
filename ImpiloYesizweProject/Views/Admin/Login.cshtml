@@ -1,73 +1,128 @@
-﻿@{
-    Layout = "_AdminLayout";
-}
-@model ImpiloYesizweProject.ViewModels.LoginViewModel
+﻿@model ImpiloYesizweProject.ViewModels.LoginViewModel
 
 @{
+    Layout = "_AdminLayout";
     ViewData["Title"] = "Admin Login";
 }
 
-<div class="container py-5">
+<!-- ==================== ADMIN LOGIN ==================== -->
 
-    <div class="row justify-content-center">
+<section class="admin-login-page">
 
-        <div class="col-md-5">
+    <div class="container">
 
-            <div class="card shadow">
+        <div class="admin-login-wrapper">
 
-                <div class="card-body p-4">
+            <div class="admin-login-card">
 
-                    <h2 class="text-center text-success mb-4">
-                        Admin Login
-                    </h2>
+                <!-- Organisation Logo -->
+                <div class="admin-login-brand">
 
-                    <form asp-action="Login" method="post">
+                    <img src="~/images/hero.png"
+                         alt="ImpiloYesizwe Care Community Project Logo"
+                         asp-append-version="true">
 
-                        @Html.AntiForgeryToken()
+                    <span>IMPILOYESIZWE</span>
 
-                        <div asp-validation-summary="ModelOnly"
-                             class="text-danger mb-3">
-                        </div>
-
-                        <div class="mb-3">
-
-                            <label asp-for="Username"></label>
-
-                            <input asp-for="Username"
-                                   class="form-control" />
-
-                            <span asp-validation-for="Username"
-                                  class="text-danger"></span>
-
-                        </div>
-
-                        <div class="mb-3">
-
-                            <label asp-for="Password"></label>
-
-                            <input asp-for="Password"
-                                   class="form-control" />
-
-                            <span asp-validation-for="Password"
-                                  class="text-danger"></span>
-
-                        </div>
-
-                        <button class="btn btn-success w-100">
-                            Login
-                        </button>
-
-                    </form>
+                    <small>CARE COMMUNITY PROJECT</small>
 
                 </div>
 
+                <!-- Login Heading -->
+                <div class="admin-login-heading">
+
+                    <span class="admin-login-label">
+                        ADMINISTRATION PORTAL
+                    </span>
+
+                    <h1>Welcome Back</h1>
+
+                    <p>
+                        Sign in to access the ImpiloYesizwe
+                        administration dashboard.
+                    </p>
+
+                </div>
+
+                <!-- Login Form -->
+                <form asp-controller="Admin"
+                      asp-action="Login"
+                      method="post">
+
+                    @Html.AntiForgeryToken()
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="text-danger admin-validation-summary mb-3">
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label asp-for="Username"
+                               class="form-label">
+                        </label>
+
+                        <input asp-for="Username"
+                               class="form-control admin-login-input"
+                               placeholder="Enter your username"
+                               autocomplete="username"
+                               autofocus />
+
+                        <span asp-validation-for="Username"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label asp-for="Password"
+                               class="form-label">
+                        </label>
+
+                        <input asp-for="Password"
+                               type="password"
+                               class="form-control admin-login-input"
+                               placeholder="Enter your password"
+                               autocomplete="current-password" />
+
+                        <span asp-validation-for="Password"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <button type="submit"
+                            class="admin-login-submit">
+
+                        Sign In
+                        <span>→</span>
+
+                    </button>
+
+                </form>
+
+                <!-- Back to website -->
+                <div class="admin-login-footer">
+
+                    <a asp-controller="Home"
+                       asp-action="Index">
+                        ← Back to Website
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="admin-login-security-note">
+                <span>🔒</span>
+                Authorised administrator access only.
             </div>
 
         </div>
 
     </div>
 
-</div>
+</section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

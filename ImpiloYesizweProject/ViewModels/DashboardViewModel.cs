@@ -10,8 +10,6 @@ namespace ImpiloYesizweProject.ViewModels
 
         public int TotalGalleryImages { get; set; }
 
-        public int TotalServices { get; set; }
-
         // NEW
         public List<ContactMessage> RecentMessages { get; set; } = new();
 
