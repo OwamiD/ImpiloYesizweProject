@@ -361,3 +361,35 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+
+# .NET build files
+**/bin/
+**/obj/
+TestResults/
+
+# Local configuration and secrets
+**/appsettings.Development.json
+**/appsettings.Production.json
+**/secrets.json
+.env
+.env.*
+
+# Database files and backups
+*.bak
+*.mdf
+*.ldf
+*.trn
+
+# Certificates and private keys
+*.pfx
+*.p12
+*.key
+
+# Uploaded gallery photographs
+**/wwwroot/uploads/gallery/*
+!**/wwwroot/uploads/gallery/.gitkeep

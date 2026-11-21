@@ -1,0 +1,193 @@
+﻿@model IEnumerable<ImpiloYesizweProject.Models.AuditLog>
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Audit History";
+
+    var logs = Model?.ToList()
+        ?? new List<ImpiloYesizweProject.Models.AuditLog>();
+}
+
+<section class="admin-management-page">
+
+    <div class="container-fluid admin-management-container">
+
+        <!-- Back to Dashboard -->
+
+        <div class="admin-back-navigation">
+
+            <a asp-controller="Admin"
+               asp-action="Index"
+               class="admin-back-link">
+                <span>←</span>
+                Back to Dashboard
+            </a>
+
+        </div>
+
+        <!-- Page Heading -->
+
+        <div class="admin-management-heading">
+
+            <div>
+                <span class="dashboard-eyebrow">
+                    ADMINISTRATION / ACCOUNTABILITY
+                </span>
+
+                <h1>Audit History</h1>
+
+                <p>
+                    Review administrative actions performed
+                    throughout the ImpiloYesizwe system.
+                </p>
+            </div>
+
+            <div class="admin-record-count">
+
+                <span>TOTAL AUDIT RECORDS</span>
+                <strong>@logs.Count</strong>
+
+            </div>
+
+        </div>
+
+        <!-- Audit Information Panel -->
+
+        <div class="admin-management-panel">
+
+            <div class="admin-management-panel-heading">
+
+                <div>
+                    <span class="admin-management-panel-icon">
+                        📋
+                    </span>
+
+                    <div>
+                        <h2>Administrator Activity</h2>
+                        <p>
+                            The latest 100 recorded system actions
+                        </p>
+                    </div>
+                </div>
+
+                <span class="admin-record-badge">
+                    AUDIT LOGS
+                </span>
+
+            </div>
+
+            @if (logs.Any())
+            {
+                <div class="admin-management-table-wrapper">
+
+                    <table class="table admin-management-table audit-table">
+
+                        <thead>
+                            <tr>
+                                <th>ADMINISTRATOR</th>
+                                <th>ACTION</th>
+                                <th>RECORD TYPE</th>
+                                <th>RECORD ID</th>
+                                <th>DESCRIPTION</th>
+                                <th>REASON</th>
+                                <th>DATE / TIME (UTC)</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var item in logs)
+                            {
+                                <tr>
+
+                                    <td>
+                                        <strong class="audit-admin-name">
+                                            @item.AdminUsername
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        <span class="audit-action-badge">
+                                            @item.Action
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span class="audit-entity">
+                                            @item.EntityType
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        @(item.EntityId?.ToString() ?? "—")
+                                    </td>
+
+                                    <td>
+                                        <div class="audit-description">
+                                            @item.Description
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        @if (!string.IsNullOrWhiteSpace(item.Reason))
+                                        {
+                                            <span class="audit-reason">
+                                                @item.Reason
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="admin-no-value">
+                                                Not specified
+                                            </span>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <span class="audit-date">
+                                            @item.CreatedAtUtc.ToString("dd MMM yyyy")
+                                        </span>
+
+                                        <small class="audit-time">
+                                            @item.CreatedAtUtc.ToString("HH:mm:ss") UTC
+                                        </small>
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            }
+            else
+            {
+                <div class="admin-management-empty">
+
+                    <div class="admin-empty-icon">📋</div>
+
+                    <h3>No Audit Activity Yet</h3>
+
+                    <p>
+                        Administrator actions recorded by the
+                        system will appear here.
+                    </p>
+
+                </div>
+            }
+
+        </div>
+
+        <!-- Security Note -->
+
+        <div class="admin-management-note">
+            <span>🔒</span>
+            Audit records are intended to support accountability
+            and should only be accessible to authorised administrators.
+        </div>
+
+    </div>
+
+</section>

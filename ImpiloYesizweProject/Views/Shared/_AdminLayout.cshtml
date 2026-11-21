@@ -1,65 +1,144 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    var isLoginPage = currentAction == "Login";
+}
+
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Admin Panel</title>
 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <title>@ViewData["Title"] - ImpiloYesizwe Administration</title>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
 </head>
 
-<body>
+<body class="admin-layout">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <!-- ================= ADMIN NAVIGATION ================= -->
+
+    <header class="admin-header">
+
+        <nav class="admin-navbar">
+
+            <div class="container">
+
+                <div class="admin-navbar-inner">
+
+                    <!-- Organisation Branding -->
+
+                    <a class="admin-brand"
+                       asp-controller="Admin"
+                       asp-action="Index">
+
+                        <img src="~/images/hero.png"
+                             asp-append-version="true"
+                             alt="ImpiloYesizwe Logo" />
+
+                        <span class="admin-brand-text">
+
+                            <strong>IMPILOYESIZWE</strong>
+
+                            <small>ADMINISTRATION PORTAL</small>
+
+                        </span>
+
+                    </a>
+
+                    <!-- Navigation Actions -->
+
+                    <div class="admin-navbar-actions">
+
+                        @if (isLoginPage)
+                        {
+                            <a asp-controller="Home"
+                               asp-action="Index"
+                               class="admin-nav-link">
+
+                                <span>←</span>
+                                Back to Website
+
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Home"
+                               asp-action="Index"
+                               class="admin-nav-link">
+
+                                View Website
+
+                            </a>
+
+                            <form asp-controller="Admin"
+                                  asp-action="Logout"
+                                  method="post"
+                                  class="d-inline">
+
+                                <button type="submit" class="admin-logout-btn">
+                                    ↗ Logout
+                                </button>
+
+                            </form>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= PAGE CONTENT ================= -->
+
+    <main class="admin-layout-main">
+
+        @RenderBody()
+
+    </main>
+
+    <!-- ================= ADMIN FOOTER ================= -->
+
+    <footer class="admin-footer">
 
         <div class="container">
 
-            <a class="navbar-brand fw-bold"
-               asp-controller="Admin"
-               asp-action="Index">
-                Admin Panel
-            </a>
+            <div class="admin-footer-inner">
 
-            <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#adminNavbar"
-                    aria-controls="adminNavbar"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <p>
+                    &copy; @DateTime.Now.Year
+                    ImpiloYesizwe Care Community Project.
+                    All rights reserved.
+                </p>
 
-                <span class="navbar-toggler-icon"></span>
-
-            </button>
-
-            <div class="collapse navbar-collapse" id="adminNavbar">
-
-                <ul class="navbar-nav ms-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           asp-controller="Admin"
-                           asp-action="Logout">
-                            Logout
-                        </a>
-                    </li>
-
-                </ul>
+                <span>
+                    CARE. DIGNITY. OPPORTUNITY.
+                </span>
 
             </div>
 
         </div>
 
-    </nav>
+    </footer>
 
-    <main>
-        @RenderBody()
-    </main>
+    <!-- ================= SCRIPTS ================= -->
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
+
 </html>

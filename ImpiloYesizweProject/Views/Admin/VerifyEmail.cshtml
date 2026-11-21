@@ -1,0 +1,165 @@
+﻿@model ImpiloYesizweProject.ViewModels.EmailVerificationViewModel
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Verify Email";
+}
+
+<section class="admin-login-page">
+
+    <div class="container">
+
+        <div class="admin-login-wrapper">
+
+            <div class="admin-login-card">
+
+                <!-- Organisation branding -->
+                <div class="admin-login-brand">
+
+                    <img src="~/images/hero.png"
+                         alt="ImpiloYesizwe Care Community Project Logo"
+                         asp-append-version="true">
+
+                    <span>IMPILOYESIZWE</span>
+
+                    <small>CARE COMMUNITY PROJECT</small>
+
+                </div>
+
+                <!-- Verification heading -->
+                <div class="admin-login-heading">
+
+                    <span class="admin-login-label">
+                        ADMINISTRATION PORTAL
+                    </span>
+
+                    <h1>Verify Your Email</h1>
+
+                    <p>
+                        We've sent a six-digit verification code
+                        to the email address registered to your
+                        administrator account.
+                    </p>
+
+                </div>
+
+                <!-- Success message -->
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success" role="status">
+                        @TempData["Success"]
+                    </div>
+                }
+
+                <!-- Error message -->
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @TempData["Error"]
+                    </div>
+                }
+
+                <!-- Verification form -->
+                <form asp-controller="Admin"
+                      asp-action="VerifyEmail"
+                      method="post">
+
+                    @Html.AntiForgeryToken()
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="text-danger admin-validation-summary mb-3">
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label asp-for="Code"
+                               class="form-label">
+                            Six-Digit Verification Code
+                        </label>
+
+                        <input asp-for="Code"
+                               type="text"
+                               inputmode="numeric"
+                               pattern="[0-9]{6}"
+                               maxlength="6"
+                               autocomplete="one-time-code"
+                               class="form-control admin-login-input text-center"
+                               placeholder="Enter your code"
+                               autofocus />
+
+                        <span asp-validation-for="Code"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <button type="submit"
+                            class="admin-login-submit">
+
+                        Verify & Continue
+
+                        <span>→</span>
+
+                    </button>
+
+                </form>
+
+                <!-- Resend verification code -->
+                <div class="text-center mt-4">
+
+                    <p class="text-muted mb-2">
+                        Didn't receive your verification code?
+                    </p>
+
+                    <form asp-controller="Admin"
+                          asp-action="ResendVerificationCode"
+                          method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        <button type="submit"
+                                class="btn btn-link">
+                            Resend Verification Code
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <!-- Cancel verification -->
+                <div class="admin-login-footer mt-3">
+
+                    <form asp-controller="Admin"
+                          asp-action="CancelVerification"
+                          method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        <button type="submit"
+                                class="btn btn-link text-decoration-none">
+                            ← Cancel and return to login
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <div class="admin-login-security-note">
+
+                <span>🔒</span>
+
+                Authorised administrator access only.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

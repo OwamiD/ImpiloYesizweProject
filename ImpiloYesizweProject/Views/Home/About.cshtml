@@ -1,71 +1,303 @@
 ﻿@{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = "About Us";
 }
 
-<section class="py-5">
+<!-- ==================== ABOUT PAGE HERO ==================== -->
+
+<section class="about-page-hero">
+
     <div class="container">
 
-        <div class="text-center mb-5">
-            <h1 class="display-4 fw-bold text-success">
-                About ImpiloYesizwe
-            </h1>
+        <span class="section-eyebrow">GET TO KNOW US</span>
 
-            <p class="lead text-muted">
-                Building stronger communities through compassion, care and opportunity.
-            </p>
+        <h1>
+            About <span>ImpiloYesizwe</span>
+        </h1>
+
+        <p>
+            Building stronger communities through compassion,
+            care and opportunity.
+        </p>
+
+        <div class="about-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <span>/</span>
+            <span>About Us</span>
         </div>
 
-        <div class="row align-items-center">
+    </div>
+
+</section>
+
+<!-- ==================== WHO WE ARE ==================== -->
+
+<section class="about-page-introduction">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
 
             <div class="col-lg-6">
 
-                <img src="~/images/about.jpg"
-                     class="img-fluid rounded shadow"
-                     alt="About ImpiloYesizwe">
+                <div class="about-page-image-wrap">
+
+                    <img src="~/images/about.jpg"
+                         asp-append-version="true"
+                         alt="ImpiloYesizwe Care Community Project">
+
+                    <div class="about-image-caption">
+                        <span>💚</span>
+                        <div>
+                            <strong>Care. Dignity. Opportunity.</strong>
+                            <small>Working towards stronger communities</small>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
 
             <div class="col-lg-6">
 
-                <h2 class="fw-bold text-success mb-4">
-                    Who We Are
-                </h2>
+                <div class="about-page-content">
 
-                <p>
-                    ImpiloYesizwe Care Community Project is a registered
-                    non-profit organisation dedicated to improving the lives
-                    of vulnerable children, youth, families and communities
-                    throughout KwaZulu-Natal.
-                </p>
+                    <span class="section-eyebrow">
+                        WHO WE ARE
+                    </span>
 
-                <p>
-                    We provide healthcare support, educational programmes,
-                    nutritional assistance and community development initiatives
-                    that create hope and sustainable change.
-                </p>
+                    <h2>
+                        Working Together for
+                        <span>Better Communities.</span>
+                    </h2>
 
-                <h3 class="mt-4 text-success">
-                    Our Vision
-                </h3>
+                    <p class="about-page-lead">
+                        ImpiloYesizwe Care Community Project is a
+                        registered non-profit organisation dedicated
+                        to improving the lives of vulnerable children,
+                        youth, families and communities throughout
+                        KwaZulu-Natal.
+                    </p>
 
-                <p>
-                    To build healthy, educated and empowered communities
-                    where every individual has the opportunity to thrive.
-                </p>
+                    <p>
+                        We provide healthcare support, educational
+                        programmes, nutritional assistance and
+                        community development initiatives that
+                        create hope and sustainable change.
+                    </p>
 
-                <h3 class="mt-4 text-success">
-                    Our Mission
-                </h3>
+                    <a asp-controller="Home"
+                       asp-action="Services"
+                       class="about-page-button">
+                        Explore Our Services
+                        <span>→</span>
+                    </a>
 
-                <p>
-                    To uplift communities through compassionate care,
-                    education, healthcare and partnerships that improve
-                    quality of life.
-                </p>
+                </div>
 
             </div>
 
         </div>
 
     </div>
+
+</section>
+
+<!-- ==================== MISSION AND VISION ==================== -->
+
+<section class="about-page-purpose">
+
+    <div class="container">
+
+        <div class="about-purpose-heading text-center mx-auto">
+
+            <span class="section-eyebrow">OUR PURPOSE</span>
+
+            <h2>
+                What Drives Our Work
+            </h2>
+
+            <p>
+                Our mission and vision guide our commitment
+                to supporting individuals and communities.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6">
+
+                <article class="about-purpose-card">
+
+                    <div class="about-purpose-icon">🎯</div>
+
+                    <span class="about-purpose-label">
+                        OUR MISSION
+                    </span>
+
+                    <h3>Uplifting Communities</h3>
+
+                    <p>
+                        To uplift communities through compassionate
+                        care, education, healthcare and partnerships
+                        that improve quality of life.
+                    </p>
+
+                </article>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <article class="about-purpose-card">
+
+                    <div class="about-purpose-icon">🌍</div>
+
+                    <span class="about-purpose-label">
+                        OUR VISION
+                    </span>
+
+                    <h3>Empowered Communities</h3>
+
+                    <p>
+                        To build healthy, educated and empowered
+                        communities where every individual has
+                        the opportunity to thrive.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==================== OUR VALUES ==================== -->
+
+<section class="about-page-values">
+
+    <div class="container">
+
+        <div class="text-center about-values-heading">
+
+            <span class="section-eyebrow">WHAT GUIDES US</span>
+
+            <h2>Our Core Values</h2>
+
+            <p>
+                The principles that shape how we approach
+                our work and engage with our communities.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-6 col-lg-3">
+                <div class="about-value-card">
+
+                    <div class="about-value-icon">❤️</div>
+
+                    <h3>Compassion</h3>
+
+                    <p>
+                        Caring for people and their wellbeing.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="about-value-card">
+
+                    <div class="about-value-icon">🤝</div>
+
+                    <h3>Unity</h3>
+
+                    <p>
+                        Working together to strengthen communities.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="about-value-card">
+
+                    <div class="about-value-icon">⚖️</div>
+
+                    <h3>Dignity</h3>
+
+                    <p>
+                        Respecting the worth of every individual.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="about-value-card">
+
+                    <div class="about-value-icon">🌱</div>
+
+                    <h3>Opportunity</h3>
+
+                    <p>
+                        Encouraging growth and development.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==================== ABOUT PAGE CTA ==================== -->
+
+<section class="about-page-cta">
+
+    <div class="container">
+
+        <div class="about-cta-content text-center">
+
+            <span class="section-eyebrow">
+                BE PART OF THE CHANGE
+            </span>
+
+            <h2>
+                Stronger Communities Start With Us.
+            </h2>
+
+            <p>
+                Connect with ImpiloYesizwe and discover
+                how you can support our community work.
+            </p>
+
+            <div class="about-cta-actions">
+
+                <a asp-controller="Home"
+                   asp-action="Contact"
+                   class="about-cta-primary">
+                    Get In Touch
+                    <span>→</span>
+                </a>
+
+                <a asp-controller="Home"
+                   asp-action="Donate"
+                   class="about-cta-secondary">
+                    Support Our Work
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </section>
